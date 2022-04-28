@@ -74,7 +74,7 @@ const HousePage = ({ data }) => {
                       <StaticImage 
                         alt="asd"
                         className="house-back-img"
-                        src="../images/intersect.png"
+                        src="../images/Intersect.png"
                         formats={["auto", "webp", "avif"]}
                       />
                       <div className="house-content ">
