@@ -2,6 +2,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import { useState } from "react"
+import Index from "../pages/index"
 
 const Header = ({ siteTitle }) => {
   const [modal, isShown] = useState(false);
@@ -10,6 +11,7 @@ const Header = ({ siteTitle }) => {
       background: `#FFF`,
       position:  `absolute`,
       width: `100%`,
+      zIndex: 999,
     }}
   > 
     <div className="container header-container">
@@ -125,8 +127,8 @@ const Header = ({ siteTitle }) => {
 
             </div>
             <div className="col-6 header-column justify-content-center">
-              <Link className="nav-link active" to="#second"> О нас </Link>
-              <Link className="nav-link" to="#houses"> Каталог </Link>
+              <Link className="nav-link active" to="/#second"> О нас </Link>
+              <Link className="nav-link" to="/#houses"> Каталог </Link>
               
               <Link
                 to="/"
@@ -156,8 +158,8 @@ const Header = ({ siteTitle }) => {
                   <path d="M6.60193 33.9038H26.3911L16.4962 27.0955L6.60193 33.9038Z" fill="#9C7300"/>
                 </svg>
               </Link>
-              <Link className="nav-link" to="#services"> Услуги </Link>
-              <Link className="nav-link" to="#smi"> СМИ </Link>
+              <Link className="nav-link" to="/#services"> Услуги </Link>
+              <Link className="nav-link" to="/#smi"> СМИ </Link>
             </div>
             <div className="col-3">
               <div className="order-button">

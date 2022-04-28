@@ -901,14 +901,13 @@ html, body {
 
 .bottom-triangles {
   height: 100px;
-  background: linear-gradient(to right, #141b2d 0%, #141b2d calc(50% - 719px), #ffffff calc(50% - 720px), #ffffff calc(50% + 720px), #141b2d calc(50% + 719px), #141b2d 100%);
+  background: linear-gradient(to right, #141b2d 0%, #141b2d calc(50% - 799px), #ffffff calc(50% - 800px), #ffffff calc(50% + 799px), #141b2d calc(50% + 800px), #141b2d 100%);
 
   box-shadow: 0 1px 0px 0px white inset;
 }
 
 .bottom-triangles div{
   position: absolute;
-  width: 1440px;
   height: 100px;
   margin: auto;
   left: 0;
@@ -1421,6 +1420,11 @@ html, body {
   background-color: #545454;
 }
 
+footer table {
+  max-width: 1440px;
+  margin: auto;
+}
+
 footer table th {
   font-size: 24px;
   font-weight: 700;
@@ -1461,4 +1465,223 @@ footer table td p {
   margin-right: 25px;
   color: #969696;
   text-decoration: none;
+}
+
+.house-back {
+  position: relative;
+  height: 950px;
+  margin: auto;
+  max-width: 1600px;
+}
+
+.house-back-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.house-content {
+  max-width: 1440px;
+  padding: 0 100px;
+  margin: auto;
+  text-align: left;
+  position: absolute;
+  top: 440px;
+  z-index: 3;
+  color: #FFF;
+}
+
+.house-content h1 {
+  font-size: 80px;
+}
+.house-content p {
+  width: 800px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.blue {
+  background-color: #141B2D;
+}
+
+.house-info-text {
+  display: flex;
+  flex-wrap: wrap;
+  color: #FFF;
+}
+.house-info-text>div{
+  display: flex;
+  align-items: center;
+  padding: 70px;
+}
+.house-info-text>div>p{
+  font-size: 18px;
+}
+
+
+.house-body-back .bottom-triangles{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  height: 50px;
+  max-width: 1600px;
+  box-shadow: none;
+  background: transparent;
+}
+
+.house-body-back .bottom-triangles>div {
+  position: absolute;
+  max-width: 1600px;
+  height: 50px;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.house-body-back .left-triangle {
+  float: left;
+  background: linear-gradient(to bottom left, transparent 0%, transparent 50%, #ffffff 51%, #ffffff 100%);
+}
+
+.house-body-back .right-triangle {
+  float: right;
+  background: linear-gradient(to bottom right, transparent 0%, transparent 50%, #ffffff 51%, #ffffff 100%);
+}
+
+.third-block .house-content {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.third-block .house-content p {
+  width: 1070px;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+.fourth-block {
+  padding: 0 50px;
+}
+
+.fourth-block .house-content p {
+  color: #000;
+}
+
+.fourth-block .house-info-text>div {
+  display: flex;
+  align-items: center;
+  color: #000;
+  padding: 30px;
+}
+
+.top-triangles {
+  position: absolute;
+  top: 0;
+  z-index: 999;height: 50px;
+  width: 100%;
+  box-shadow: none;
+  background: #FFFFFF;
+}
+.top-triangles div {
+  position: absolute;
+  max-width: 1600px;
+  height: 50px;
+  margin: auto;
+  left: 0;
+  right: 0;
+}
+
+.house-body-back .top-triangles .left-triangle {
+  float: left;
+  background: linear-gradient(to bottom left, transparent 0%, transparent 50%, #141B2D 51%, #141B2D 100%);
+}
+
+.house-body-back .top-triangles .right-triangle {
+  float: right;
+  background: linear-gradient(to bottom right, transparent 0%, transparent 50%,  #141B2D 51%, #141B2D 100%);
+}
+
+.house-gallery{
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #FFF;
+  text-align: center;
+  padding: 70px;
+  width: 1440px;
+}
+
+
+.four-image {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.house-images {
+  display: flex;
+
+}
+
+.two-image {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.top-last-triangle {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  height: 100px;
+  width: 100%;
+  box-shadow: none;
+  background: #141B2D;
+}
+.top-last-triangle div {
+  position: absolute;
+  max-width: 1600px;
+  height: 200px;
+  margin: auto;
+  top: 100px;
+  left: 0;
+  right: 0;
+}
+
+.top-last-triangle .left-triangle {
+  float: left;
+  background:  linear-gradient(to right bottom, #141B2D 0%, #141B2D 0%, #141B2D 50%, transparent 51%, transparent 100%);
+}
+
+.distance-text {
+  width: 1440px;
+  margin: auto;
+  text-align: center;
+  padding: 50px;
+}
+
+.distance-text h2{
+  font-size: 40px;
+}
+
+.distance-text p{
+  font-size: 24px;
 }

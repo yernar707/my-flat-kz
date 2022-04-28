@@ -1,5 +1,6 @@
 import React from "react"
 import { useState } from "react";
+import { Link } from "gatsby";
 
 
 export default function Intro({ children }) {
@@ -27,7 +28,7 @@ export default function Intro({ children }) {
                         Отличное решение для комфортной жизни и<br></br> выгодного
                         инвестирования!
                     </p>
-                    <button className="order" 
+                    <Link to="/#footer" className="order" 
                         style={{
                             padding: `0.5rem 1.6rem 0.5rem 1.6rem`,
                             border: `none`,
@@ -35,36 +36,16 @@ export default function Intro({ children }) {
                             fontWeight: 500,
                             fontSize: `16px`,
                             fontFamily: `SF UI Display`,
-                            
+                            textDecoration: `none`,
+                            color: `#000`,
+                            cursor: `pointer`,
                         }}
-                        onClick={() => isShown(!modal)}
                     >
                         Связаться с нами 
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
-        { modal && (<div className="modal-order dark-bck" 
-                        onClick={() => isShown(false)}>
-                <form >
-                    <h3>Оставить заявку</h3>
-                    <table>
-                        <tr>
-                            <input type="text" placeholder="Имя" name="name"></input>
-                        </tr>
-                        <tr>
-                            <input type="text" placeholder="Номер телефона" name="phone"></input>
-                        </tr>
-                        <tr>
-                            <textarea placeholder="Сообщение" rows={5} name="message"></textarea>
-                        </tr>
-                        <tr>
-                            <input type="submit" placeholder="Сообщение" name="message"></input>
-                        </tr>
-                    </table>
-                </form>
-            </div>)
-        }
         
       </div>
 

@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer
+        <footer id="footer"
           style={{
             padding: 50,
             textAlign: `center`,
