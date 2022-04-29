@@ -22,6 +22,7 @@ export default function Second({ children }) {
                         <p className="service-card-title">Онлайн покупка недвижимости</p>
                         
                         <StaticImage
+                            className="service-img"
                             src="../images/services/unsplash_Hcfwew744z4.png"
                             width={300}
                             quality={95}
@@ -42,6 +43,7 @@ export default function Second({ children }) {
                         <p className="service-card-title">Консультация и подбор недвижимости</p>
                         
                         <StaticImage
+                            className="service-img"
                             src="../images/services/unsplash_HJckKnwCXxQ.png"
                             width={300}
                             quality={95}
@@ -62,7 +64,8 @@ export default function Second({ children }) {
                         <p className="service-card-title">Организация тура для клиентов</p>
                         
                         <StaticImage
-                            src="../images/services/unsplash_Q59HmzK38eQ.png"
+                            className="service-img"
+                            src="../images/services/unsplash_dRHE-XF7wls.png"
                             width={300}
                             quality={95}
                             formats={["auto", "webp", "avif"]}
@@ -80,14 +83,15 @@ export default function Second({ children }) {
                     <div className="service-card col-3"  onMouseEnter={() => fourthShown(true)}
                             onMouseLeave={() => fourthShown(false)}>
                         <p className="service-card-title">Безопасный перевод денежных средств</p>
-                        
                         <StaticImage
-                            src="../images/services/unsplash_dRHE-XF7wls.png"
+                            className="service-img"
+                            src="../images/services/unsplash_Q59HmzK38eQ.png"
                             width={300}
                             quality={95}
                             formats={["auto", "webp", "avif"]}
                             alt="A Gatsby astronaut"
                         />
+                        
                         {fourth && (<div className={`service-card-back fourth-service `}>
                             <div className="dark-bck">
                                 <div className="service-card-back-text">

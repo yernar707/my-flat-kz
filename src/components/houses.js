@@ -23,7 +23,7 @@ export const pageQuery = graphql `
 const HousePage = () => {
     const { houses } = useStaticQuery(pageQuery);
 	return (
-		<div id="houses" className="houses">
+		<div className="houses">
 			<div className="body-back services-container">
 				<div className="service-row">
 					{ houses.nodes.map (({ slug, ...house }) => (

@@ -6,7 +6,7 @@ export default function Filter({ children }) {
 
 
   return (
-      <div className="filter">
+      <div className="filter" id="houses">
         <div className="filter-inner">
           <div className="body-back dark-bck">
               <div className="services-container">

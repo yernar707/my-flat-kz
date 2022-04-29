@@ -1,46 +1,17 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
-import { useState } from "react"
-import Index from "../pages/index"
 
 class Header extends React.Component {
   state = {
-    modal: false
+    dropdown: false
   }
-  
-
-  constructor(props){
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(event){ 
-    event.preventDefault();
-    fetch('https://my--flat.herokuapp.com/api/v1/request/new', {
-      method: 'post',
-      headers: {'Content-Type':'application/json'},
-      mode: 'cors',
-      body: JSON.stringify({
-      "name": this.name.value,
-      "phoneNumber" : this.phone.value,
-      "message" : this.msg.value,
-      })
-    }).then(
-      alert("Ваша заявка принята"),
-      this.setState({modal:false})
-    )
-    .catch((err) => console.log(err));
-  };
 
   render() {
-    const siteTitle = this.props
-    const { modal } = this.state;
+    const { dropdown } = this.state;
     return (
       <header
         style={{
           background: `#FFF`,
-          position:  `absolute`,
           width: `100%`,
           zIndex: 999,
         }}
@@ -130,16 +101,21 @@ class Header extends React.Component {
               </a>
             </div>
             <div className="col-6 header-column header-column-social justify-content-end">
-              <a href="https://twitter.com">
+              <div onClick={() => this.setState({dropdown: !this.state.dropdown})} style={{position:"relative", cursor:`pointer`}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-whatsapp" viewBox="0 0 16 16">
                   <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
                 </svg>
-              </a>
-              <a href="https://twitter.com">
+                  <div className={`whatsapp-dropdown ${dropdown && `full-opacity`}`}>
+                    <a href="#">KZ</a>
+                    <a href="#">TR</a>
+                  </div>
+              </div>
+              {/* <a href="https://twitter.com">
                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-tiktok" viewBox="0 0 16 16">
                   <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/>
                 </svg>
-              </a>
+              </a> */}
+              
               <a href="https://twitter.com">
                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" className="bi bi-instagram" viewBox="0 0 16 16">
                   <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
@@ -150,86 +126,6 @@ class Header extends React.Component {
           
         </div>
       </div>
-      <div className="bottom-header">
-        <div className="container header-container">
-          <div className="align-items-center">
-            <div className="row align-items-center">
-              <div className="col-3">
-
-              </div>
-              <div className="col-6 header-column justify-content-center">
-                <Link className="nav-link active" to="/#second"> О нас </Link>
-                <Link className="nav-link" to="/#houses"> Каталог </Link>
-                
-                <Link
-                  to="/"
-                  className="nav-link"
-                  style={{
-                    color: `black`,
-                    textDecoration: `none`,
-                    display: `flex`,
-                    alignItems: `center`,
-                    fontWeight: 600,
-                  }}
-                >
-                  <svg width="33" height="44" viewBox="0 0 33 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2.39118 42.108L3.15783 37.4869H4.72131V43.9955H3.65864V39.3278L2.88215 43.9949H1.81882L0.980626 39.3929V43.9949H0V37.4863H1.56349L2.39118 42.108Z" fill="white"/>
-                    <path d="M6.59201 41.8385L5.17096 37.4873H6.34653L7.20507 40.4532L8.06361 37.4873H9.13678L7.71573 41.8385V43.9953H6.59201V41.8385Z" fill="white"/>
-                    <path d="M10.7101 40.3791H12.1614V41.3088H10.7101V43.9959H9.58643V37.4873H12.5618V38.4188H10.7101V40.3791Z" fill="white"/>
-                    <path d="M13.1019 37.4873H14.2263V43.0656H16.076V43.9953H13.1019V37.4873Z" fill="white"/>
-                    <path d="M20.2047 43.9949H19.0704L18.8735 42.8144H17.4951L17.2982 43.9949H16.2703L17.415 37.4863H19.0599L20.2047 43.9949ZM17.6395 41.9313H18.7232L18.181 38.64L17.6395 41.9313Z" fill="white"/>
-                    <path d="M20.3989 37.4873H23.8737V38.4188H22.6988V43.9971H21.5744V38.4188H20.3989V37.4873Z" fill="white"/>
-                    <path d="M24.8359 43.0098V43.995H23.751V43.0098H24.8359Z" fill="white"/>
-                    <path d="M27.1235 41.4044L26.7762 42.0015V44.0001H25.6519V37.4915H26.7762V40.3272L28.2492 37.4873H29.3735L27.8087 40.3893L29.3722 43.9965H28.217L27.1235 41.4044Z" fill="white"/>
-                    <path d="M33 37.4873V38.3985L30.8642 43.0656H33V43.9953H29.7096V43.0847L31.8454 38.4188H29.8107V37.4873H33Z" fill="white"/>
-                    <path d="M9.96973 17.9442V18.0571L13.1879 20.2718L16.5 22.5504L19.8003 24.8218L28.0135 30.473L33 33.904V24.8045L26.4126 20.2718L23.0303 17.9442L19.8003 15.7224L16.5 13.4509L13.1958 15.7248L9.96973 17.9442Z" fill="#C09716"/>
-                    <path d="M19.6618 11.2758L22.9621 13.5466L23.0303 13.4994V13.5932L28.0135 17.023L33 20.4535V11.354L26.2735 6.72632L23.0303 8.95775L21.8055 9.79969L19.6618 11.2758Z" fill="#E3BB2C"/>
-                    <path d="M0 11.3536V20.4531L4.98322 17.025L9.96973 13.5928V13.5044L10.034 13.5486L13.3383 11.2754L16.5 9.10008L23.0303 4.60677V4.49331L16.5 0L9.96973 4.49331L0 11.3536Z" fill="#D7AF25"/>
-                    <path d="M0 24.8043V33.9038L4.98321 30.4751L13.1958 24.824L9.88372 22.5454L6.58346 20.2739L0 24.8043Z" fill="#B48B0F"/>
-                    <path d="M6.60193 33.9038H26.3911L16.4962 27.0955L6.60193 33.9038Z" fill="#9C7300"/>
-                  </svg>
-                </Link>
-                <Link className="nav-link" to="/#services"> Услуги </Link>
-                <Link className="nav-link" to="/#smi"> СМИ </Link>
-              </div>
-              <div className="col-3">
-                <div className="order-button">
-                    <button onClick={() => this.setState({modal:true})}>
-                      Оставить заявку
-                      <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.7558 5.26581L15.7742 0.304076C15.5358 0.00717338 15.1775 -0.081629 14.8661 0.0790655C14.5548 0.23976 14.3517 0.618316 14.3517 1.03826V4.1827C14.3517 4.32608 14.2584 4.44232 14.1433 4.44232H1.25C0.559644 4.44232 0 5.13972 0 6C0 6.86028 0.559644 7.55768 1.25 7.55768H14.1433C14.2584 7.55768 14.3517 7.67391 14.3517 7.8173V10.9617C14.3517 11.3817 14.5548 11.7602 14.8661 11.9209C15.1775 12.0816 15.5358 11.9928 15.7742 11.6959L19.7558 6.73419C20.0811 6.32867 20.0811 5.67133 19.7558 5.26581Z" fill="#141B2D"/>
-                      </svg>
-                    </button>
-                </div>
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    
-      { modal && (<div className="modal-order dark-bck" 
-        >
-          <form onSubmit={this.handleSubmit} style={{position: `relative`}} >
-            <span onClick={() => this.setState({modal:false})} style={{position: `absolute`, cursor: `pointer`, fontSize: 24, top: 15, right: 20, color: `#FFF`}}>×</span>
-            <h3>Оставить заявку</h3>
-            <table>
-              <tr>
-                  <input required ref={(ref) => {this.name = ref}} type="text" placeholder="Имя" name="name"></input>
-              </tr>
-              <tr>
-                  <input required ref={(ref) => {this.phone = ref}} type="text" placeholder="Номер телефона" name="phone"></input>
-              </tr>
-              <tr>
-                  <textarea required ref={(ref) => {this.msg = ref}} placeholder="Сообщение" rows={5} name="message"></textarea>
-              </tr>
-              <tr>
-                  <input type="submit"></input>
-              </tr>
-            </table>
-          </form>
-        </div>)
-    }
     </header>
     
   )}

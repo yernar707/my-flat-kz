@@ -607,6 +607,9 @@ pre tt:after {
 
 .bottom-header {
   background-color: #141B2D;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 .country-name p {
@@ -649,6 +652,7 @@ pre tt:after {
 .header-column {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
 
 .header-column-langs a{
@@ -684,11 +688,12 @@ pre tt:after {
 .nav-link {
   font-size: 1rem;
   font-weight: 300;
-  padding: 0 2.2rem;
+  padding: 0 2.3rem;
   color: #FFF;
+  white-space: nowrap;
 }
 
-.nav-link:hover {
+.nav-link:hover, .nav-link:focus {
   color: rgb(145, 145, 145);
 }
 
@@ -742,9 +747,10 @@ html, body {
 }
 
 
-.modal-order form table tr{
+.modal-order form table td{
   display: flex;
   justify-content: center;
+  padding: 0;
 }
 
 .modal-order form input[type=text], .modal-order form textarea {
@@ -891,11 +897,11 @@ html, body {
   background-size: cover;
 }
 .third-service {
-  background: url(../images/services/unsplash_Q59HmzK38eQ.png);
+  background: url(../images/services/unsplash_dRHE-XF7wls.png);
   background-size: cover;
 }
 .fourth-service {
-  background: url(../images/services/unsplash_dRHE-XF7wls.png);
+  background: url(../images/services/unsplash_Q59HmzK38eQ.png);
   background-size: cover;
 }
 
@@ -1684,4 +1690,97 @@ footer table td p {
 
 .distance-text p{
   font-size: 24px;
+}
+
+.sidebar-btns {
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  z-index: 99;
+  font-size: 1.125rem;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  padding: 0.9375rem;
+  border-radius: 100%;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  background-position: center;
+}
+
+#scroll-btn {
+  right: 15%;
+  z-index: 9999;
+  border: none;
+}
+
+.sidebar-btns>div {
+  position: absolute;
+  border-radius: 100%;
+  border: none;
+}
+
+.front-btn {
+  background-color: transparent;
+  color: #141B2D;
+  z-index: 10001;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.front-btn>svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 300ms transform;
+}
+
+.front-btn>svg:hover {
+  transform: translateY(-65%);
+}
+
+.back-btn {
+  background-color: #FFF;
+  z-index: 10000;
+  left: 3px;
+  right: 3px;
+  top: 3px;
+  bottom: 3px;
+}
+
+.whatsapp-dropdown {
+  position: absolute;
+  left: -15px;
+  top: 35px;
+  background-color: #FFF;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 15%;
+  box-shadow: 0px 11px 20px 2px #333;
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+.full-opacity {
+  opacity: 1 !important;
+}
+
+.whatsapp-dropdown>a{
+  padding: 5px 15px;
+  margin-left: 0;
+}
+
+.service-img {
+  pointer-events: none;
 }
