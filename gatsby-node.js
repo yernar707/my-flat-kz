@@ -60,3 +60,4 @@ exports.onCreatePage = async ({ page, actions }) => {
     createPage(page)
   }
 }
+

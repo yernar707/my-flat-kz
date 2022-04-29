@@ -13,6 +13,7 @@ export default function Home() {
           <div className="admin-links">
             <Link to="/app/catalog">Каталог</Link>
             <Link to="/app/smi">СМИ</Link>
+            <Link to="/app/queries">Заявки</Link>
           </div>
         ) : (
           <>

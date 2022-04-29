@@ -6,6 +6,7 @@ import Houses from "../components/catalog"
 import Smi from "../components/admin-smi"
 import NewHouse from "../components/new-house"
 import Login from "../components/login"
+import Queries from "../components/queries"
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <PrivateRoute path="/app/catalog" component={Houses} />
         <PrivateRoute path="/app/smi" component={Smi} />
         <PrivateRoute path="/app/new-house" component={NewHouse} />
+        <PrivateRoute path="/app/queries" component={Queries} />
         <Login path="/app/login" />
       </Router>
     </Layout>

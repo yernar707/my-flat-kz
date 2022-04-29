@@ -27,6 +27,8 @@ export default function NavBar() {
         {` `}
         <Link to="/app/smi">СМИ</Link>
         {` `}
+        <Link to="/app/queries">Заявки</Link>
+        {` `}
         {isLoggedIn() ? (
           <a
             href="/"
