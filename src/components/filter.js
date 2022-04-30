@@ -10,7 +10,8 @@ class Filter extends React.Component {
   state = {
     sliderEuroValues: [0, 980000],
     sliderTengeValues: [0, 98000000],
-    currency: 'Default'
+    sliderDollarValues: [0, 98000000],
+    currency: 'euro'
   };
 
   currencyChange = currency => {
@@ -29,8 +30,12 @@ class Filter extends React.Component {
     this.setState({ sliderTengeValues });
   };
 
+  handleDollarChange = sliderDollarValues => {
+    console.log(sliderDollarValues);
+    this.setState({ sliderDollarValues });
+  };
   render() {     
-    const { sliderEuroValues, sliderTengeValues, currency } = this.state;
+    const { sliderEuroValues, sliderTengeValues, sliderDollarValues, currency } = this.state;
     return (
       <div className="filter" id="houses">
         <div className="filter-inner">
@@ -39,16 +44,6 @@ class Filter extends React.Component {
 
                 <div className="filter-settings">
                   <div className="service-row filter-options">
-                    <div className="col-3 filter-select">
-                      <select defaultValue={`Default`}>
-                        <option value="Default" disabled>Количество комнат</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5+</option>
-                      </select>
-                    </div>
                     <div className="col-3 filter-select">
                       <select defaultValue={`Default`}>
                         <option value="Default" disabled>Выберите район</option>
@@ -61,17 +56,26 @@ class Filter extends React.Component {
                     </div>
                     <div className="col-3 filter-select">
                       <select defaultValue={`Default`}>
-                        <option value="Default" disabled>Сортировать по</option>
-                        <option value="asc-price">Возрастанию цены</option>
-                        <option value="desc-price">Убыванию цены</option>
+                        <option value="Default" disabled>Количество спален</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5+</option>
                       </select>
                     </div>
                     <div className="col-3 filter-select">
                       <select value={this.state.currency} onChange={this.currencyChange}>
-                        <option value="Default" disabled>Валюта</option>
-                        <option value="Default">По умолчанию</option>
-                        <option value="tenge">Тенге</option>
                         <option value="euro">Евро</option>
+                        <option value="tenge">Тенге</option>
+                        <option value="dollar">Доллар</option>
+                      </select>
+                    </div>
+                    <div className="col-3 filter-select">
+                      <select defaultValue={`Default`}>
+                        <option value="Default" disabled>Сортировать по</option>
+                        <option value="asc-price">Возрастанию цены</option>
+                        <option value="desc-price">Убыванию цены</option>
                       </select>
                     </div>
                   </div>
@@ -92,6 +96,19 @@ class Filter extends React.Component {
                         handleStyle={{border: `1px solid #FFF`, background:`#141B2D`, opacity: 1, zIndex: 999, width: 25, height: 25, marginTop: `-10px`}}
                         railStyle={{background:`#777`, height: 6}}
                       /> <div className="col-12" style={{textAlign:`center`, color: `#FFF`}}>Ценовой диапазон: {sliderEuroValues[0]}€ - {sliderEuroValues[1]}€</div>
+                      </div>}
+                      { currency === 'dollar'  && 
+                        <div><Slider 
+                        range 
+                        min={0}
+                        max={980000}
+                        allowCross={false} 
+                        defaultValue={sliderDollarValues} 
+                        onChange={this.handleDollarChange} 
+                        trackStyle={{background:`#FFF`, height: 6}}
+                        handleStyle={{border: `1px solid #FFF`, background:`#141B2D`, opacity: 1, zIndex: 999, width: 25, height: 25, marginTop: `-10px`}}
+                        railStyle={{background:`#777`, height: 6}}
+                      /> <div className="col-12" style={{textAlign:`center`, color: `#FFF`}}>Ценовой диапазон: {sliderEuroValues[0]}$ - {sliderEuroValues[1]}$</div>
                       </div>}
                         { currency === 'tenge'  && <div><Slider 
                           range 
