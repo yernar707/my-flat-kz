@@ -32,8 +32,12 @@ export default function Second({ children }) {
                         {first && (<div className={`service-card-back first-service `}>
                             <div className="dark-bck">
                                 <div className="service-card-back-text">
-                                    <p className="service-card-title">Онлайн покупка недвижимости</p>
-                                    <p className="service-card-text">Lorem Ipsum является текст-заполнитель обычно используется в графических, печать и издательской индустрии для предварительного просмотра макета и визуальных макетах</p>
+                                    <p className="service-card-title">Купить квартиру не выходя из дома?</p>
+                                    <p className="service-card-text">
+                                        Да!<br></br>
+                                        С нами Вы можете купить недвижимость онлайн.
+                                        Мы гарантируем полную прозрачность и контроль на каждом этапе сделки.
+                                    </p>
                                 </div>
                             </div>
                         </div>)}
@@ -54,7 +58,9 @@ export default function Second({ children }) {
                             <div className="dark-bck">
                                 <div className="service-card-back-text">
                                     <p className="service-card-title">Консультация и подбор недвижимости</p>
-                                    <p className="service-card-text">Lorem Ipsum является текст-заполнитель обычно используется в графических, печать и издательской индустрии для предварительного просмотра макета и визуальных макетах</p>
+                                    <p className="service-card-text">
+                                        При покупке квартиры всегда выбирайте проверенные компании чтобы в итоге не получить "Кота в мешке". Наши специалисты являются профессионалами своего дела, с многолетним опытом работы. Мы готовы проконсультировать и подобрать Вам недвижимость Вашей мечты
+                                    </p>
                                 </div>
                             </div>
                         </div>)}
@@ -74,8 +80,10 @@ export default function Second({ children }) {
                         {third && (<div className={`service-card-back third-service `}>
                             <div className="dark-bck">
                                 <div className="service-card-back-text">
-                                    <p className="service-card-title">Организация тура для клиентов</p>
-                                    <p className="service-card-text">Lorem Ipsum является текст-заполнитель обычно используется в графических, печать и издательской индустрии для предварительного просмотра макета и визуальных макетах</p>
+                                    <p className="service-card-title">А как? А что? А где?</p>
+                                    <p className="service-card-text">
+                                        Специально для Вас мы подготовили программу ознакомительного тура с проживанием в комфортных апартаментах. Ваш личный менеджер, расскажет и покажет все объекты недвижимости. Вы сможете познакомиться с культурой и объектами достопримечательностей, с головой окунётесь в местный колорит.  Вы сможете выбрать наиболее подходящий объект, который в последующем станет Вашим «домом мечты»!
+                                    </p>
                                 </div>
                             </div>
                         </div>)}

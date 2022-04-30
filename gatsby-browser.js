@@ -14,6 +14,7 @@ import "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-collapsible";
+import "rc-slider";
 
 /** The SideBarBtns class */
 class SideBarBtns {

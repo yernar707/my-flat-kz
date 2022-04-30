@@ -43,6 +43,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `backgrounds`,
+        path: `${__dirname}/src/bg`, // wherever background images are stored
+      },
+    },
+    {
     	resolve: `gatsby-source-graphcms`,
     	options: {
     		endpoint: `https://api-ap-south-1.graphcms.com/v2/cl2hdu51w41ef01z625ez3rdh/master`,
@@ -50,7 +57,24 @@ module.exports = {
     	}
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `dominantColor`,
+          quality: 50,
+          breakpoints: [750, 1080, 1366, 1920],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        },
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

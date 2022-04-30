@@ -6,7 +6,8 @@ import Index from "../pages/index"
 
 class BottomHeader extends React.Component {
   state = {
-    modal: false
+    modal: false,
+    sent: false
   }
   
 
@@ -27,26 +28,25 @@ class BottomHeader extends React.Component {
       "message" : this.msg.value,
       })
     }).then(
-      alert("Ваша заявка принята"),
-      this.setState({modal:false})
+      this.setState({sent:true})
     )
     .catch((err) => console.log(err));
   };
 
   render() {
     const siteTitle = this.props
-    const { modal } = this.state;
+    const { modal, sent } = this.state;
     return (
         <div className="bottom-header">
             <div className="container header-container">
                 <div className="align-items-center">
                     <div className="row align-items-center">
-                    <div className="col-3">
+                    <div className="col-2">
 
                     </div>
-                    <div className="col-6 header-column">
+                    <div className="col-8 header-column">
                         <Link className="nav-link active" to="/#second"> О нас </Link>
-                        <Link className="nav-link" to="/#houses"> Каталог </Link>
+                        <Link className="nav-link" to="/#houses"> Комплексы </Link>
                         <Link className="nav-link" to="/#houses"> Каталог </Link>
                         <Link
                         to="/"
@@ -77,10 +77,10 @@ class BottomHeader extends React.Component {
                         </svg>
                         </Link>
                         <Link className="nav-link" to="/#services"> Услуги </Link>
-                        <Link className="nav-link" to="/#smi"> СМИ </Link>
+                        <Link className="nav-link" to="/#smi"> СМИ о нас</Link>
                         <Link className="nav-link" to="/#footer"> Контакты </Link>
                     </div>
-                    <div className="col-3">
+                    <div className="col-2">
                         <div className="order-button">
                             <button onClick={() => this.setState({modal:true})}>
                             Оставить заявку
@@ -96,26 +96,37 @@ class BottomHeader extends React.Component {
             </div>
         { modal && (<div className="modal-order dark-bck" 
             >
-            <form onSubmit={this.handleSubmit} style={{position: `relative`}} >
-                <span onClick={() => this.setState({modal:false})} style={{position: `absolute`, cursor: `pointer`, fontSize: 24, top: 15, right: 20, color: `#FFF`}}>×</span>
-                <h3>Оставить заявку</h3>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td><input required ref={(ref) => {this.name = ref}} type="text" placeholder="Имя" name="name"></input></td>
-                        </tr>
-                        <tr>
-                            <td><input required ref={(ref) => {this.phone = ref}} type="text" placeholder="Номер телефона" name="phone"></input></td>
-                        </tr>
-                        <tr>
-                            <td><textarea required ref={(ref) => {this.msg = ref}} placeholder="Сообщение" rows={5} name="message"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit"></input></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
+            
+                <form onSubmit={this.handleSubmit} style={{position: `relative`}} >
+                    <span onClick={() => this.setState({modal:false})} style={{position: `absolute`, cursor: `pointer`, fontSize: 24, top: 15, right: 20, color: `#FFF`}}>×</span>
+                    { !sent &&
+                    <div>
+                        <h3>Оставить заявку</h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><input required ref={(ref) => {this.name = ref}} type="text" placeholder="Имя" name="name"></input></td>
+                                </tr>
+                                <tr>
+                                    <td><input required ref={(ref) => {this.phone = ref}} type="text" placeholder="Номер телефона" name="phone"></input></td>
+                                </tr>
+                                <tr>
+                                    <td><textarea required ref={(ref) => {this.msg = ref}} placeholder="Сообщение" rows={5} name="message"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="submit"></input></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    }
+                    { sent &&
+                        <div className="thank-you-msg">
+                            <h3>Спасибо! Ваша заявка отправлена</h3>
+                            <button onClick={() => this.setState({sent:false, modal: false})}>Хорошо</button>
+                        </div>
+                    }
+                </form>
             </div>)}
         </div>
     )
