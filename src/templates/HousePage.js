@@ -18,12 +18,12 @@ const HousePage = ({ data }) => {
       footerRight, 
       bck,
       secondImg, 
-      // thirdImg, 
-      // leftImg, 
-      // rightImg, 
-      // galleryBig, 
-      // gallery,
-      // bottomImg
+      thirdImg, 
+      leftImg, 
+      rightImg, 
+      galleryBig, 
+      gallery,
+      bottomImg
     } = data.markdownRemark.frontmatter;
 
     return(
@@ -81,13 +81,13 @@ const HousePage = ({ data }) => {
                       <div className='absolute dark-bck'>
 
                       </div>
-                          {/* <GatsbyImage 
+                          <GatsbyImage 
                             src={`../images/${thirdImg.relativePath}`} 
                             className="house-back-img"
                             image={thirdImg.childImageSharp.gatsbyImageData}
                             alt={title}
                             formats={["auto", "webp", "avif"]}
-                          /> */}
+                          />
                       <div className="house-content ">
                           <p>
                             {<div dangerouslySetInnerHTML={{ __html: third }} />}
@@ -106,23 +106,23 @@ const HousePage = ({ data }) => {
               <div className="house-body-back" style={{position: `relative`}}>
                       <div className='house-info-text'>
                         <div className='col-4'>
-                          {/* <GatsbyImage 
+                          <GatsbyImage 
                             src={`../images/${leftImg.relativePath}`} 
                             image={leftImg.childImageSharp.gatsbyImageData}
                             alt={title}
                             formats={["auto", "webp", "avif"]}
-                          /> */}
+                          />
                         </div>
                         <div className='col-4' style={{textAlign:`center`}}>
                             {<div dangerouslySetInnerHTML={{ __html: fourth }} />}
                         </div>
                         <div className='col-4'>
-                          {/* <GatsbyImage 
+                          <GatsbyImage 
                             src={`../images/${rightImg.relativePath}`} 
                             image={rightImg.childImageSharp.gatsbyImageData}
                             alt={title}
                             formats={["auto", "webp", "avif"]}
-                          /> */}
+                          />
                         </div>
                       </div>
                       <div className="bottom-triangles">
@@ -145,17 +145,17 @@ const HousePage = ({ data }) => {
                         </div>
                         <div className='col-12 house-images'>
                           <div className='col-6'>
-                           {/* <GatsbyImage
+                           <GatsbyImage
                               style={{height: 580}}
                               src={`../images/${galleryBig.relativePath}`}
                               image={galleryBig.childImageSharp.gatsbyImageData}
                               alt={title}
                               formats={["auto", "webp", "avif"]}
-                            />*/}
+                            />
                           </div>
                           <div className='col-6 four-image'>
 
-                              {/* {console.log("gallery >>", gallery)}
+                              {console.log("gallery >>", gallery)}
                               {
                                 gallery.map(image => {
                                   return <GatsbyImage
@@ -167,7 +167,7 @@ const HousePage = ({ data }) => {
                                     formats={["auto", "webp", "avif"]}
                                   />
                                 })
-                              } */}
+                              }
 
                           </div>
                         </div>
@@ -182,13 +182,13 @@ const HousePage = ({ data }) => {
                       <div className='absolute dark-bck'>
 
                       </div>
-                          {/* <GatsbyImage 
+                          <GatsbyImage 
                             src={`../images/${bottomImg.relativePath}`} 
                             className="house-back-img"
                             image={bottomImg.childImageSharp.gatsbyImageData}
                             alt={title}
                             formats={["auto", "webp", "avif"]}
-                          /> */}
+                          />
                       <div className="top-last-triangle">
                           <div className="left-triangle"></div>
                       </div>
@@ -235,6 +235,41 @@ export const pageQuery = graphql`
           }
         }
         secondImg {
+          relativePath
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        thirdImg {
+          relativePath
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        leftImg {
+          relativePath
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        rightImg {
+          relativePath
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        galleryBig {
+          relativePath
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        gallery {
+          childrenImageSharp {
+            gatsbyImageData
+          }
+        }
+        bottomImg {
           relativePath
           childImageSharp {
             gatsbyImageData
