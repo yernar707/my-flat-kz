@@ -57,7 +57,7 @@ const SmiPage = ({ data }) => {
                                                 <p>Ссылки на источники:</p>
                                                 {
                                                     article.links.map( link => {
-                                                        return (<div key={article.id}><a href={link}>{link}</a><br></br></div>)
+                                                        return (<div key={link}><a href={link}>{link}</a><br></br></div>)
                                                     })
                                                 }
                                             </div>
@@ -69,7 +69,7 @@ const SmiPage = ({ data }) => {
                                             <GatsbyImage className="slider-img" src={article.image.url} image={article.image.gatsbyImageData} alt={article.text} />
                                         </div>
                                       </div>
-                                      <a onClick={() => setArticle(`${slug}-modal`) }>More</a>
+                                      <a onClick={() => setArticle(`${slug}`) }>More</a>
                                   </div>
                               </div>
                         ))}
