@@ -145,13 +145,13 @@ const HousePage = ({ data }) => {
                         </div>
                         <div className='col-12 house-images'>
                           <div className='col-6'>
-                            <GatsbyImage
+                           {/* <GatsbyImage
                               style={{height: 580}}
                               src={`../images/${galleryBig.relativePath}`}
                               image={galleryBig.childImageSharp.gatsbyImageData}
                               alt={title}
                               formats={["auto", "webp", "avif"]}
-                            />
+                            />*/}
                           </div>
                           <div className='col-6 four-image'>
 
