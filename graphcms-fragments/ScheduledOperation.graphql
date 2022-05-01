@@ -37,6 +37,16 @@ fragment ScheduledOperation on ScheduledOperation {
   }
   status
   affectedDocuments {
+    ... on Admin {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+    ... on Article {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
     ... on Asset {
       remoteTypeName: __typename
       remoteId: id

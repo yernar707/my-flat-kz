@@ -31,8 +31,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `houses`,
-        path: `${__dirname}/src/houses`,
+        name: `complexes`,
+        path: `${__dirname}/src/complexes`,
       },
     },
     {
@@ -47,6 +47,13 @@ module.exports = {
       options: {
         name: `backgrounds`,
         path: `${__dirname}/src/bg`, // wherever background images are stored
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `flats`,
+        path: `${__dirname}/src/flat`, // wherever background images are stored
       },
     },
     {

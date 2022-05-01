@@ -200,7 +200,7 @@ const Layout = ({ children }) => {
               </tr>
             </tbody>
           </table>
-          © 2021 MYFLATKZ. All rights reserved.
+          © 2020 MYFLAT.KZ. All rights reserved.
         </footer>
       </div>
     </>

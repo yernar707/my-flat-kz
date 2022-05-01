@@ -1,34 +1,36 @@
 const path = require('path');
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
   const { data } = await graphql(`
-    query Houses{
-      allGraphCmsHouse {
+    query MyQuery {
+      allMarkdownRemark(filter: {frontmatter: {type: {eq: "complex"}}}) {
         nodes {
-          slug
+          frontmatter {
+            slug
+          }
         }
       }
     }
   `);
 
-  console.log("data >> ", data);
 
-  data.allGraphCmsHouse.nodes.forEach( node => {
-    const { slug } = node;
-    createPage({
-      path: `/houses/${slug}`,
+
+  data.allMarkdownRemark.nodes.forEach( node => {
+    const { slug } = node.frontmatter;
+    console.log("data >> ", slug);
+    actions.createPage({
+      path: slug,
       component: path.resolve(`./src/templates/HousePage.js`),
       context: { slug },
     })
   });
 
-  createPage({
-    path: "/using-dsg",
-    component: require.resolve("./src/templates/using-dsg.js"),
-    context: {},
-    defer: true,
-  })
+  // createPage({
+  //   path: "/using-dsg",
+  //   component: require.resolve("./src/templates/using-dsg.js"),
+  //   context: {},
+  //   defer: true,
+  // })
 }
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {

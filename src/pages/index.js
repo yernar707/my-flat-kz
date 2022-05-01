@@ -5,7 +5,6 @@ import Intro from "../components/intro"
 import Second from "../components/second"
 import Filter from "../components/filter"
 import PostService from "../components/postService"
-import Questions from "../components/questions"
 import Houses from "../components/houses"
 import Smi from "../components/smi"
 
@@ -13,7 +12,7 @@ import Smi from "../components/smi"
 
 
 
-const HomePage = ({ data }) => {
+const HomePage = () => {
     return (
         <Layout>
           <Seo title="MYFLAT.KZ" />
@@ -23,7 +22,6 @@ const HomePage = ({ data }) => {
           <Houses></Houses>
           <PostService></PostService>
           <Smi></Smi>
-          <Questions></Questions>
         </Layout>
     )
 }

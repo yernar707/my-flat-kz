@@ -1,8 +1,11 @@
 import * as React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import { Link, StaticQuery, graphql } from "gatsby"
 import { useState } from "react"
 import Index from "../pages/index"
+import Complexes from "../components/complexes"
+
+
 
 class BottomHeader extends React.Component {
   state = {
@@ -46,7 +49,14 @@ class BottomHeader extends React.Component {
                     </div>
                     <div className="col-8 header-column">
                         <Link className="nav-link active" to="/#second"> О нас </Link>
-                        <Link className="nav-link" to="/#houses"> Комплексы </Link>
+                        <div className="wrapper">
+                            <Link className="nav-link"> Комплексы </Link>
+                            <div className="complexes-dropdown contents">
+                                <div className="inner">
+                                    <Complexes></Complexes>
+                                </div>
+                            </div>
+                        </div>
                         <Link className="nav-link" to="/#houses"> Каталог </Link>
                         <Link
                         to="/"
@@ -123,9 +133,11 @@ class BottomHeader extends React.Component {
                     { sent &&
                         <div className="thank-you-msg">
                             <h3>Спасибо! Ваша заявка отправлена</h3>
+                            <h3>Наш менеджер свяжется с вами</h3>
                             <button onClick={() => this.setState({sent:false, modal: false})}>Хорошо</button>
                         </div>
                     }
+
                 </form>
             </div>)}
         </div>
@@ -136,3 +148,18 @@ class BottomHeader extends React.Component {
 
 
 export default BottomHeader
+
+
+export const pageQuery = graphql `
+    {
+        complexes: allMarkdownRemark(filter: {frontmatter: {type: {eq: "complex"}}}) {
+        nodes {
+            frontmatter {
+                title
+                slug
+            }
+            id
+        }
+        }
+    }
+`

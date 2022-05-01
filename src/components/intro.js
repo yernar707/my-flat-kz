@@ -1,17 +1,18 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby";
-import BackgroundSlider from "gatsby-image-background-slider"
+import BackgroundSlider from 'gatsby-image-background-slider'
 
 
 export default function Intro({ children }) {
   return (
-      <>
+      
+    <>
         <div id="second" className="intro">
             <div className="body-back hello-text">
                 <BackgroundSlider
                     className="intro-background"
                     query={useStaticQuery(graphql`
-                        query MyQuery {
+                        {
                             backgrounds: allFile(filter: {sourceInstanceName: {eq: "backgrounds"}}) {
                                 nodes {
                                     relativePath
@@ -63,10 +64,10 @@ export default function Intro({ children }) {
                     </div>
                 </div>
                 </div>
-            </div>
+        </div>
             
 
-        </>
+    </>
 
   )
 }

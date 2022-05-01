@@ -1,23 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage } from "gatsby-plugin-image";
 import Slider from "react-slick";
+import Modal from 'react-modal';
 
 export const pageQuery = graphql `
 	{
 		smi: allGraphCmsArticle {
 			nodes{
-				text
+                links
 				slug
 				portal
 				image {
 				  gatsbyImageData
 				  url
 				}
+                text
+                title
+                id
 			}
 		}
 	}
 `
+
 const settings = {
     dots: false,
     infinite: false,
@@ -29,6 +34,7 @@ const settings = {
 
 
 const SmiPage = ({ data }) => {
+    const [article, setArticle] = useState("");
     const { smi } = useStaticQuery(pageQuery);
 	return (
         <div id="smi" className="smi">
@@ -37,9 +43,6 @@ const SmiPage = ({ data }) => {
                         <p>СМИ о нас</p>
                     </div>
                     <div className="smi-text">
-                        <p>
-                            Lorem Ipsum является текст-заполнитель обычно используется в графических, печать и издательской индустрии для предварительного просмотра макета и визуальных макетах
-                        </p>
                     </div>
                     <Slider {...settings} className="overflow-hidden">
                         { smi.nodes.map (({ slug, ...article }) => (
@@ -48,12 +51,16 @@ const SmiPage = ({ data }) => {
                                       <div className="service-row">
                                         <div className="col-7">
                                             <p className="slider-text">
-                                                {article.text}
+                                                {article.title}
                                             </p>
-                                            <p className="slider-portal">
-                                                - Портал "{article.portal}"
-                                            </p>
-                                            <a href={`${slug}`}>Перейти</a>
+                                            <div className="slider-portal">
+                                                <p>Ссылки на источники:</p>
+                                                {
+                                                    article.links.map( link => {
+                                                        return (<div key={article.id}><a href={link}>{link}</a><br></br></div>)
+                                                    })
+                                                }
+                                            </div>
                                         </div>
                                         <div className='col-5' style={{
                                             display: `flex`, 
@@ -62,6 +69,7 @@ const SmiPage = ({ data }) => {
                                             <GatsbyImage className="slider-img" src={article.image.url} image={article.image.gatsbyImageData} alt={article.text} />
                                         </div>
                                       </div>
+                                      <a onClick={() => setArticle(`${slug}-modal`) }>More</a>
                                   </div>
                               </div>
                         ))}

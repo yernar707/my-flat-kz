@@ -5,8 +5,10 @@ fragment Article on Article {
   createdAt
   remoteId: id
   slug
-  text
+  title
   portal
+  links
+  text
   publishedBy {
     ... on User {
       remoteTypeName: __typename
