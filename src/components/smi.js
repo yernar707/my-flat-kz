@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage } from "gatsby-plugin-image";
 import Slider from "react-slick";
-import Modal from 'react-modal';
 
 export const pageQuery = graphql `
 	{
@@ -35,7 +34,7 @@ const settings = {
 
 const SmiPage = ({ data }) => {
     const [modal, setModal] = useState("");
-    const { smi } = useStaticQuery(pageQuery);
+    const { smi, flats } = useStaticQuery(pageQuery);
 	return (
         <div id="smi" className="smi">
             <div className="body-back services-container smi-container">

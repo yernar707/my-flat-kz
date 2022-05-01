@@ -148,18 +148,3 @@ class BottomHeader extends React.Component {
 
 
 export default BottomHeader
-
-
-export const pageQuery = graphql `
-    {
-        complexes: allMarkdownRemark(filter: {frontmatter: {type: {eq: "complex"}}}) {
-        nodes {
-            frontmatter {
-                title
-                slug
-            }
-            id
-        }
-        }
-    }
-`

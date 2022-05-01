@@ -216,7 +216,7 @@ const HousePage = ({ data }) => {
 };
 
 export const pageQuery = graphql`
-  query MyQuery($slug: String) {
+  query HouseQuery($slug: String) {
     markdownRemark(frontmatter: {slug: {eq: $slug}}) {
       frontmatter {
         slug

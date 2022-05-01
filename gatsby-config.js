@@ -55,6 +55,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `flatImages`,
+        path: `${__dirname}/src/flatPageImg`, // wherever background images are stored
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `flats`,
         path: `${__dirname}/src/flat`, // wherever background images are stored
       },
@@ -65,6 +72,14 @@ module.exports = {
     		endpoint: `https://api-ap-south-1.graphcms.com/v2/cl2hdu51w41ef01z625ez3rdh/master`,
         token: process.env.API_KEY,
     	}
+    },
+    {
+      resolve: 'gatsby-source-rest-api',
+      options: {
+        endpoints: [
+          'https://my--flat.herokuapp.com/api/v1/house/list/',
+        ],
+      },
     },
     `gatsby-transformer-sharp`,
     {

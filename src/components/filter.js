@@ -47,21 +47,18 @@ class Filter extends React.Component {
                     <div className="col-3 filter-select">
                       <select defaultValue={`Default`}>
                         <option value="Default" disabled>Выберите район</option>
-                        <option value="Район 1">Район 1</option>
-                        <option value="Район 2">Район 2</option>
-                        <option value="Район 3">Район 3</option>
-                        <option value="Район 4">Район 4</option>
-                        <option value="Район 5">Район 5</option>
+                        <option value="Авсалар">Авсалар</option>
+                        <option value="Махмутлар">Махмутлар</option>
+                        <option value="Каргыджак">Каргыджак</option>
                       </select>
                     </div>
                     <div className="col-3 filter-select">
                       <select defaultValue={`Default`}>
                         <option value="Default" disabled>Количество спален</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5+</option>
+                        <option value="1">1 + 1</option>
+                        <option value="2">2 + 1</option>
+                        <option value="3">3 + 1</option>
+                        <option value="4">4 + 1 Duplex</option>
                       </select>
                     </div>
                     <div className="col-3 filter-select">

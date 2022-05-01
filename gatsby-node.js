@@ -1,36 +1,43 @@
 const path = require('path');
+const fetch = (...args) =>
+  import(`node-fetch`).then(({ default: fetch }) => fetch(...args))
 
 exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
     query MyQuery {
-      allMarkdownRemark(filter: {frontmatter: {type: {eq: "complex"}}}) {
+      complexPage: allMarkdownRemark(filter: {frontmatter: {type: {eq: "complex"}}}) {
         nodes {
           frontmatter {
             slug
           }
         }
       }
+      flatPage: allRestApiApiV1HouseList {
+          nodes {
+              id
+            endpointId
+          }
+      }
     }
   `);
 
-
-
-  data.allMarkdownRemark.nodes.forEach( node => {
+  data.complexPage.nodes.forEach( node => {
     const { slug } = node.frontmatter;
-    console.log("data >> ", slug);
     actions.createPage({
       path: slug,
       component: path.resolve(`./src/templates/HousePage.js`),
       context: { slug },
     })
   });
+  data.flatPage.nodes.forEach( node => {
+    const endpointId = node.endpointId;
+    actions.createPage({
+      path: `/houses/${endpointId}`,
+      component: path.resolve(`./src/templates/FlatPage.js`),
+      context: { endpointId },
+    })
+  });
 
-  // createPage({
-  //   path: "/using-dsg",
-  //   component: require.resolve("./src/templates/using-dsg.js"),
-  //   context: {},
-  //   defer: true,
-  // })
 }
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
