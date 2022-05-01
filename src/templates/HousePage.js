@@ -16,7 +16,7 @@ const HousePage = ({ data }) => {
       fifth, 
       footerLeft, 
       footerRight, 
-      //bck
+      bck
       // secondImg, 
       // thirdImg, 
       // leftImg, 
@@ -35,13 +35,13 @@ const HousePage = ({ data }) => {
                       <div className='absolute dark-bck'>
 
                       </div>
-        {/* <GatsbyImage 
+                      <GatsbyImage 
                         src={`../images/${bck.relativePath}`} 
                         image={bck.childImageSharp.gatsbyImageData}
                         alt={title}
                         className="house-back-img"
                         formats={["auto", "webp", "avif"]}
-                      /> */}
+                      />
                       <div className="house-content ">
                           <h1>
                             {<div dangerouslySetInnerHTML={{ __html: title }} />}
