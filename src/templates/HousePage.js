@@ -16,7 +16,7 @@ const HousePage = ({ data }) => {
       fifth, 
       footerLeft, 
       footerRight, 
-      bck, 
+      bck
       // secondImg, 
       // thirdImg, 
       // leftImg, 
@@ -234,49 +234,6 @@ export const pageQuery = graphql`
             gatsbyImageData
           }
         }
-        // secondImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // thirdImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // leftImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // rightImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // bottomImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // galleryBig {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData(quality: 100, transformOptions: {fit: CONTAIN})
-        //   }
-        // }
-        // gallery {
-        //   relativePath
-        //   childrenImageSharp {
-        //     gatsbyImageData(quality: 100, transformOptions: {fit: CONTAIN})
-        //   }
-        //   id
-        // }
       }
       excerpt(truncate: true)
     }
