@@ -2031,3 +2031,31 @@ footer table td p {
   margin: 60px auto;
   border-radius: 10px;
 }
+
+.flat-content {
+
+}
+
+.flat-title, .flat-price {
+  padding-top: 30px;
+  text-align: left;
+}
+
+.flat-price h4{
+  text-align: right;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.short-info .col-4 p{
+  display: flex;
+  align-items: center;
+}
+
+.short-info h3 {
+  text-align: center;
+}
+
+.short-info .col-4 p svg {
+  margin-right: 5px;
+}
