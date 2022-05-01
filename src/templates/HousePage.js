@@ -16,7 +16,7 @@ const HousePage = ({ data }) => {
       fifth, 
       footerLeft, 
       footerRight, 
-      bck, 
+      //bck
       // secondImg, 
       // thirdImg, 
       // leftImg, 
@@ -35,13 +35,13 @@ const HousePage = ({ data }) => {
                       <div className='absolute dark-bck'>
 
                       </div>
-                      <GatsbyImage 
+        {/* <GatsbyImage 
                         src={`../images/${bck.relativePath}`} 
                         image={bck.childImageSharp.gatsbyImageData}
                         alt={title}
                         className="house-back-img"
                         formats={["auto", "webp", "avif"]}
-                      />
+                      /> */}
                       <div className="house-content ">
                           <h1>
                             {<div dangerouslySetInnerHTML={{ __html: title }} />}
@@ -145,13 +145,13 @@ const HousePage = ({ data }) => {
                         </div>
                         <div className='col-12 house-images'>
                           <div className='col-6'>
-                            <GatsbyImage
+                           {/* <GatsbyImage
                               style={{height: 580}}
                               src={`../images/${galleryBig.relativePath}`}
                               image={galleryBig.childImageSharp.gatsbyImageData}
                               alt={title}
                               formats={["auto", "webp", "avif"]}
-                            />
+                            />*/}
                           </div>
                           <div className='col-6 four-image'>
 
@@ -234,49 +234,6 @@ export const pageQuery = graphql`
             gatsbyImageData
           }
         }
-        // secondImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // thirdImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // leftImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // rightImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // bottomImg {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData
-        //   }
-        // }
-        // galleryBig {
-        //   relativePath
-        //   childImageSharp {
-        //     gatsbyImageData(quality: 100, transformOptions: {fit: CONTAIN})
-        //   }
-        // }
-        // gallery {
-        //   relativePath
-        //   childrenImageSharp {
-        //     gatsbyImageData(quality: 100, transformOptions: {fit: CONTAIN})
-        //   }
-        //   id
-        // }
       }
       excerpt(truncate: true)
     }
