@@ -853,7 +853,7 @@ html, body {
 
 .services-container {
   padding: 30px 0;
-  max-width: 1440px;
+  max-width: 1600px;
   margin: auto;
 }
 
@@ -861,6 +861,7 @@ html, body {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  padding: 0 70px;
 }
 
 .second>.body-back>.services-container {
@@ -1207,13 +1208,16 @@ html, body {
 }
 
 .smi {
-  background-color: #141B2D;
+  /* background-color: #141B2D;
   padding-left: 110px;
-  padding-bottom: 50px;
+  padding-bottom: 50px; */
 }
 
 .smi-container {
   margin: auto;
+  background-color: #141B2D;
+  padding-left: 110px;
+  padding-bottom: 50px;
 }
 
 .smi .paragraph-title {
@@ -1253,9 +1257,14 @@ html, body {
   padding: 30px;
 }
 
+.slider-row {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
 .slider-text {
-  padding: 80px 0;
-  padding: 40px 0;
+  padding: 20px 0;
   font-family: 'SF UI Display';
   font-style: normal;
   font-weight: 600;
@@ -1273,6 +1282,7 @@ html, body {
   line-height: 24px;
   /* identical to box height */
   color: #000000;
+  margin-bottom: 15px;
 }
 
 .slider-inner a {
@@ -1988,3 +1998,18 @@ footer table td p {
   transition: height 1s ease-in-out;
 }
 
+.smi-modal {
+  background-color: #FFF;
+  width: 900px;
+  max-height: 550px;
+  border-radius: 15px;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  padding: 50px;
+  position: relative;
+}
+
+.slider-inner .smi-more {
+  cursor: pointer;
+  font-size: 20px;
+}

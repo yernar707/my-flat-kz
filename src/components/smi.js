@@ -34,11 +34,11 @@ const settings = {
 
 
 const SmiPage = ({ data }) => {
-    const [article, setArticle] = useState("");
+    const [modal, setModal] = useState("");
     const { smi } = useStaticQuery(pageQuery);
 	return (
         <div id="smi" className="smi">
-            <div className="body-back services-container" style={{paddingBottom: 0,}}>
+            <div className="body-back services-container smi-container">
                     <div className="paragraph-title">
                         <p>СМИ о нас</p>
                     </div>
@@ -46,18 +46,18 @@ const SmiPage = ({ data }) => {
                     </div>
                     <Slider {...settings} className="overflow-hidden">
                         { smi.nodes.map (({ slug, ...article }) => (
-                              <div className="slider-container" key={slug}>
+                              <div className="slider-container" key={article.id}>
                                   <div className="slider-inner container">
-                                      <div className="service-row">
+                                      <div className="slider-row">
                                         <div className="col-7">
                                             <p className="slider-text">
                                                 {article.title}
                                             </p>
                                             <div className="slider-portal">
-                                                <p>Ссылки на источники:</p>
+                                                <p style={{marginBottom: 0}}>Ссылки на источники:</p>
                                                 {
                                                     article.links.map( link => {
-                                                        return (<div key={link}><a href={link}>{link}</a><br></br></div>)
+                                                        return (<div key={`${article.id}${link}`}><a href={link}>{link}</a><br></br></div>)
                                                     })
                                                 }
                                             </div>
@@ -69,12 +69,32 @@ const SmiPage = ({ data }) => {
                                             <GatsbyImage className="slider-img" src={article.image.url} image={article.image.gatsbyImageData} alt={article.text} />
                                         </div>
                                       </div>
-                                      <a onClick={() => setArticle(`${slug}`) }>More</a>
+                                      <a className='smi-more' onClick={() => {setModal(`${article.id}`)} }>Читать полностью</a>
                                   </div>
                               </div>
                         ))}
                     </Slider>
                 </div>
+                { smi.nodes.map (({ slug, ...article }) => (
+                    modal === (article.id) ? <div className="modal-order dark-bck" key={`${article.id}-modal`}>
+                        <div className='smi-modal'>
+                            <span onClick={() => setModal("")} style={{position: `absolute`, cursor: `pointer`, fontSize: 24, top: 15, right: 20, color: `#000`}}>×</span>
+                            <h1>{article.title}</h1>
+                            <div>
+                                <p>
+                                    {article.text}
+                                </p>
+                            </div>
+                            <div>   
+                                {
+                                    article.links.map( link => {
+                                        return (<div key={`${article.id}${link}-modal`}><a href={link}>{link}</a><br></br></div>)
+                                    })
+                                }
+                            </div>
+                        </div>
+                    </div> : <div></div>
+                ))}
           </div>
 	)
 };
