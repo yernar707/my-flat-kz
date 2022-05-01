@@ -34,6 +34,9 @@ export default function Intro({ children }) {
                         <h1>
                             недвижимость в Турции
                         </h1>
+                        <p>
+                            Прямые продажи от застройщика на территории СНГ
+                        </p>
                         <hr
                             style={{
                                 width: 765,
@@ -43,8 +46,7 @@ export default function Intro({ children }) {
                             }}     
                         ></hr>
                         <p>
-                            Отличное решение для комфортной жизни и<br></br> выгодного
-                            инвестирования!
+                            Без комиссий. Без переплат
                         </p>
                         <Link to="/#footer" className="order" 
                             style={{
