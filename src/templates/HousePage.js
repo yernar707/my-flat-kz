@@ -16,8 +16,8 @@ const HousePage = ({ data }) => {
       fifth, 
       footerLeft, 
       footerRight, 
-      bck
-      // secondImg, 
+      bck,
+      secondImg, 
       // thirdImg, 
       // leftImg, 
       // rightImg, 
@@ -65,12 +65,12 @@ const HousePage = ({ data }) => {
                           </p>    
                         </div>
                         <div className='col-6'> 
-                          {/* <GatsbyImage 
+                          <GatsbyImage 
                             src={`../images/${secondImg.relativePath}`} 
                             image={secondImg.childImageSharp.gatsbyImageData}
                             alt={title}
                             formats={["auto", "webp", "avif"]}
-                          /> */}
+                          />
                         </div>
                       </div>
               </div>
@@ -229,6 +229,12 @@ export const pageQuery = graphql`
         second
         fifth
         bck {
+          relativePath
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+        secondImg {
           relativePath
           childImageSharp {
             gatsbyImageData
