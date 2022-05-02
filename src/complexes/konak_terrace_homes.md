@@ -17,7 +17,7 @@ footerRight: "<b>БЛОКИ A, B, C, D, E, F, G 140 квартир:</b><br>
 (1 + 1 72 шт. - 2 + 1 33 шт. -2 + 1 дуплекс 17 шт. -3 + 1 дуплекс 18 шт.)<br>
 "
 type: complex
-bck: ../images/konak-terrace-homes/TERRACE HOMES (1).jpg).jpg
+bck: ../images/konak-terrace-homes/TERRACE HOMES (1).jpg
 secondImg: ../images/konak-terrace-homes/TERRACE HOMES (2).jpg
 thirdImg: ../images/konak-terrace-homes/TERRACE HOMES (3).jpg
 leftImg: ../images/konak-terrace-homes/TERRACE HOMES (4).jpg
