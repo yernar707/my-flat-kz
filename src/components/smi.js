@@ -77,7 +77,7 @@ const SmiPage = ({ data }) => {
                     modal === (article.id) ? <div className="modal-order dark-bck" key={`${article.id}-modal`}>
                         <div className='smi-modal'>
                             <span onClick={() => setModal("")} style={{position: `absolute`, cursor: `pointer`, fontSize: 24, top: 15, right: 20, color: `#000`}}>×</span>
-                            <h3>{article.title}</h3>
+                            {<h3 dangerouslySetInnerHTML={{ __html: article.title }} />}
                             <StaticImage 
                                 src='../bg/5f3e59d8-364c-4d91-8446-5d616b5795f6.jpg'
                                 width={200}
@@ -85,9 +85,7 @@ const SmiPage = ({ data }) => {
                                 quality={95}
                             />
                             <div><br></br>
-                                <p>
-                                    {article.text}
-                                </p>
+                                {<p dangerouslySetInnerHTML={{ __html: article.text }} />}
                             </div>
                             <div>   
                                 {

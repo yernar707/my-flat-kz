@@ -41,6 +41,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `flats`,
+        path: `${__dirname}/src/flats`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `smi`,
         path: `${__dirname}/src/smi`,
       },

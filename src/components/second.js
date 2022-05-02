@@ -104,7 +104,7 @@ export default function Second({ children }) {
                             <div className="dark-bck">
                                 <div className="service-card-back-text">
                                     <p className="service-card-title">Безопасный перевод денежных средств</p>
-                                    <p className="service-card-text">Lorem Ipsum является текст-заполнитель обычно используется в графических, печать и издательской индустрии для предварительного просмотра макета и визуальных макетах</p>
+                                    <p className="service-card-text">Компания застройщик принимает любые виды оплат. В том числе и на территории снг</p>
                                 </div>
                             </div>
                         </div>)}

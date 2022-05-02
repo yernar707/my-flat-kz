@@ -12,9 +12,9 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      flatPage: allRestApiApiV1HouseList {
+      flatPage: allMarkdownRemark(filter: {frontmatter: {houseType: {eq: "flat"}}}) {
           nodes {
-            endpointId
+            id
           }
       }
     }
@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   });
   data.flatPage.nodes.forEach( node => {
-    const endpointId = node.endpointId;
+    const endpointId = node.id;
     actions.createPage({
       path: `/houses/${endpointId}`,
       component: path.resolve(`./src/templates/FlatPage.js`),

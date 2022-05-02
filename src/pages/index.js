@@ -5,7 +5,7 @@ import Intro from "../components/intro"
 import Second from "../components/second"
 import Filter from "../components/filter"
 import PostService from "../components/postService"
-import Houses from "../components/houses"
+import Houses from "../components/houses_local"
 import Smi from "../components/smi"
 
 const HomePage = () => {

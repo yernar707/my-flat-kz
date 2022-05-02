@@ -4,10 +4,9 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Slider from "react-slick";
+import Img from 'gatsby-image'
 
 const FlatPage = ({ data }) => {
-
-    const images = data.images;
 
     const settings = {
         dots: true,
@@ -19,15 +18,22 @@ const FlatPage = ({ data }) => {
       };
     
     const { 
-        city,
-        priceEuro,
-        priceTenge,
-        room,
-        name,
+        address,
         area,
+        city,
+        constructionYear,
         furniture,
-        priceDollar
-    } = data.restApiApiV1HouseList;
+        houseType,
+        images,
+        name,
+        room,
+        toAirport,
+        toCenter,
+        toSea,
+        priceTenge,
+        priceDollar,
+        priceEuro,
+    } = data.markdownRemark.frontmatter;
 
 
     return(
@@ -39,17 +45,10 @@ const FlatPage = ({ data }) => {
                             <Slider {...settings}>
 
                                 {
-                                    images.nodes.map(img => {
-                                        return <GatsbyImage
-                                            key={img.id}
-                                            className="service-img"
-                                            src={`../flatPageImg/${img.relativePath}`}
-                                            image={img.childImageSharp.gatsbyImageData}
-                                            height={500}
-                                            quality={95}
-                                            formats={["auto", "webp", "avif"]}
-                                            alt="A Gatsby astronaut"
-                                        />
+                                    images.map(img => {
+                                        return <Img
+                                            fluid={img.childrenImageSharp[0].fluid}
+                                            alt="Gatsby Docs are awesome" />
                                     })
                                 }
                             </Slider>
@@ -105,7 +104,7 @@ const FlatPage = ({ data }) => {
                                             <path fillRule="evenodd" d="M5.04.303A.5.5 0 0 1 5.5 0h5c.2 0 .38.12.46.303l3 7a.5.5 0 0 1-.363.687h-.002c-.15.03-.3.056-.45.081a32.731 32.731 0 0 1-4.645.425V13.5a.5.5 0 1 1-1 0V8.495a32.753 32.753 0 0 1-4.645-.425c-.15-.025-.3-.05-.45-.08h-.003a.5.5 0 0 1-.362-.688l3-7ZM3.21 7.116A31.27 31.27 0 0 0 8 7.5a31.27 31.27 0 0 0 4.791-.384L10.171 1H5.83L3.209 7.116Z"/>
                                             <path d="M6.493 12.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.052.075l-.001.004-.004.01V14l.002.008a.147.147 0 0 0 .016.033.62.62 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.62.62 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411Z"/>
                                         </svg>
-                                        Мебель: {furniture==="yes" ? `Да` : `Нет`}
+                                        Мебель: {furniture && furniture==="yes" ? `Да` : `Нет`}
                                     </p>
                                 </div>
                                 <div className='col-4'>
@@ -140,17 +139,31 @@ const FlatPage = ({ data }) => {
 export default FlatPage;
 
 export const pageQuery = graphql`
-    query MyQuery($endpointId: Int) {
-        restApiApiV1HouseList(endpointId: {eq: $endpointId}) {
-            endpointId
-            city
-            priceEuro
-            priceTenge
-            priceDollar
-            area
-            furniture
-            room
-            name
+    query MyQuery($endpointId: String) {
+        markdownRemark(id: {eq: $endpointId}) {
+            frontmatter{
+                address
+                area
+                city
+                constructionYear
+                furniture
+                houseType
+                images {
+                  childrenImageSharp {
+                      fluid {
+                          ...GatsbyImageSharpFluid
+                      }
+                  }
+                }
+                name
+                room
+                toAirport
+                toCenter
+                toSea
+                priceTenge
+                priceDollar
+                priceEuro
+            }
         }
         images: allFile(filter: {sourceInstanceName: {eq: "flatImages"}}) {
             nodes {
