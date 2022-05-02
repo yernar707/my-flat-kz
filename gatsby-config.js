@@ -80,14 +80,6 @@ module.exports = {
         token: process.env.API_KEY,
     	}
     },
-    {
-      resolve: 'gatsby-source-rest-api',
-      options: {
-        endpoints: [
-          'https://my--flat.herokuapp.com/api/v1/house/list/',
-        ],
-      },
-    },
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-sharp`,

@@ -52,17 +52,22 @@ class Catalog extends React.Component {
 
 
 	render(){
-		const { data } = this.props
 		const { fetchedData } = this.state;
 
 		const get = (event) =>{
 			const id = event.target.id
-			fetch(`https://my--flat.herokuapp.com/api/v1/house/delete/${id}`) //need to change get -> delete
-			.then(response => {
-				return response.json();
+			event.preventDefault();
+			fetch(`https://my--flat.herokuapp.com/api/v1/house/delete/${id}`, {//need to change get -> delete
+				method: 'delete',
+				headers: {'Content-Type':'application/json'},
+				mode: 'cors'
 			})
-			.then(json =>
-				console.log(json)	
+			.then(
+			  alert(id + " удален"),
+			  // window.location.reload()
+			)
+			.then(
+			  window.location.reload(),
 			)
 		}
 
