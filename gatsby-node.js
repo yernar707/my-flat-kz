@@ -21,6 +21,21 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
+  fetch("https://my--flat.herokuapp.com/api/v1/house/list/")
+  .then(response => {
+    return response.json();
+  })
+  .then(json => {
+    Promise.all(json.map(house => {
+      const id = house.id;
+      actions.createPage({
+        path: `/houses/${id}`,
+        component: path.resolve(`./src/templates/FlatPage.js`),
+        context: { id },
+      })
+    }))
+  })
+
   data.complexPage.nodes.forEach( node => {
     const { slug } = node.frontmatter;
     actions.createPage({
