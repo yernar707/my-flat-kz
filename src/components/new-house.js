@@ -1,5 +1,30 @@
 import React from 'react'
 
+function deploy() {
+  fetch('http://localhost:8000/__refresh', {
+    method: 'post'
+  }).then(
+    console.log("done")
+  ).catch(
+    (err) =>  console.log(err)
+  )
+  // fetch("https://my--flat.herokuapp.com/api/v1/house/list/")
+  // .then(response => {
+  //   return response.json();
+  // })
+  // .then(json => {
+  //   const newId = json[json.length - 1].id;
+  //   const path = require('path');
+  //   exports.createPages = async ({ graphql, actions }) => {
+  //     actions.createPage({
+  //       path: `/houses/${newId}`,
+  //       component: path.resolve(`./src/templates/FlatPage.js`),
+  //       context: { newId },
+  //     })
+  //   }
+  // })
+}
+
 class NewHouse extends React.Component{ 
   constructor(props){
     super(props);
@@ -41,9 +66,11 @@ class NewHouse extends React.Component{
   .then(
     alert(this.name.value + " добавлен"),
     // window.location.reload()
-  )
-  .then(
-    window.location.reload(),
+  // )
+  // .then(
+  //   window.location.reload(),
+  ).then(
+    deploy()
   )
   .catch((err) => console.log(err));
  };

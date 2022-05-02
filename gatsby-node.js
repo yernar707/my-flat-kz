@@ -2,6 +2,15 @@ const path = require('path');
 const fetch = (...args) =>
   import(`node-fetch`).then(({ default: fetch }) => fetch(...args))
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify'),
+      },
+    },
+  })
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
@@ -13,28 +22,13 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      flatPage: allMarkdownRemark(filter: {frontmatter: {houseType: {eq: "flat"}}}) {
-          nodes {
-            id
-          }
+      flatPage: allRestApiApiV1HouseList {
+        nodes {
+          endpointId
+        }
       }
     }
   `);
-
-  fetch("https://my--flat.herokuapp.com/api/v1/house/list/")
-  .then(response => {
-    return response.json();
-  })
-  .then(json => {
-    Promise.all(json.map(house => {
-      const id = house.id;
-      actions.createPage({
-        path: `/houses/${id}`,
-        component: path.resolve(`./src/templates/FlatPage.js`),
-        context: { id },
-      })
-    }))
-  })
 
   data.complexPage.nodes.forEach( node => {
     const { slug } = node.frontmatter;
@@ -45,7 +39,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   });
   data.flatPage.nodes.forEach( node => {
-    const endpointId = node.id;
+    const endpointId = node.endpointId;
     actions.createPage({
       path: `/houses/${endpointId}`,
       component: path.resolve(`./src/templates/FlatPage.js`),

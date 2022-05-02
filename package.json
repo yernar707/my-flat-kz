@@ -10,6 +10,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
+    "deploy": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
@@ -27,6 +28,7 @@
     "gatsby-plugin-react-helmet": "^5.13.0",
     "gatsby-plugin-remote-images": "^3.4.0",
     "gatsby-plugin-sharp": "^4.13.0",
+    "gatsby-plugin-trigger-deploy": "^0.0.2",
     "gatsby-source-filesystem": "^4.13.0",
     "gatsby-source-graphcms": "^2.8.0",
     "gatsby-source-graphql": "^4.13.0",
@@ -34,6 +36,7 @@
     "gatsby-transformer-remark": "^5.13.0",
     "gatsby-transformer-sharp": "^4.13.0",
     "jquery": "^3.6.0",
+    "path-browserify": "^1.0.1",
     "prop-types": "^15.8.1",
     "rc-slider": "^10.0.0",
     "react": "^17.0.1",
