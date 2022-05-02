@@ -49,9 +49,9 @@ const FlatPage = ({ data }) => {
 
                                 {
                                     images.map(img => {
-                                        return <Img
-                                            fluid={img.childrenImageSharp[0].fluid}
-                                            alt="Gatsby Docs are awesome" />
+                                            let imgUrl = img.replace('file/d/', 'uc?export=view&id=');
+                                            imgUrl = imgUrl + img.replace('/view', '');
+                                            return <img key={img} src={imgUrl} alt={name}/>
                                     })
                                 }
                             </Slider>
@@ -95,12 +95,6 @@ const FlatPage = ({ data }) => {
                                             <path fillRule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344 0a.5.5 0 0 1 .707 0l4.096 4.096V11.5a.5.5 0 1 1 1 0v3.975a.5.5 0 0 1-.5.5H11.5a.5.5 0 0 1 0-1h2.768l-4.096-4.096a.5.5 0 0 1 0-.707zm0-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707zm-4.344 0a.5.5 0 0 1-.707 0L1.025 1.732V4.5a.5.5 0 0 1-1 0V.525a.5.5 0 0 1 .5-.5H4.5a.5.5 0 0 1 0 1H1.732l4.096 4.096a.5.5 0 0 1 0 .707z"/>
                                         </svg>
                                         Площадь брутто: {area ? area : `777`}
-                                    </p>
-                                    <p>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-door-open-fill" viewBox="0 0 16 16">
-                                            <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
-                                        </svg>
-                                        Готово к переезду
                                     </p>
                                     <p>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-lamp" viewBox="0 0 16 16">
@@ -152,13 +146,7 @@ export const pageQuery = graphql`
                 constructionYear
                 furniture
                 houseType
-                images {
-                  childrenImageSharp {
-                      fluid {
-                          ...GatsbyImageSharpFluid
-                      }
-                  }
-                }
+                images
                 name
                 room
                 toAirport

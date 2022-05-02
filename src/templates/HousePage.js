@@ -28,7 +28,7 @@ const HousePage = ({ data }) => {
     return(
         <Layout>
           <Seo title="MYFLAT.KZ" />
-            <div className="intro">
+            <div className="intro" >
               <div className="house-body-back">
                   <div className="house-back">
                       <div className='absolute dark-bck'>

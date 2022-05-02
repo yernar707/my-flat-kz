@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    < >
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />      
       <BottomHeader />
       <button id="scroll-btn" className="sidebar-btns" title="Scroll to top">
@@ -44,6 +44,9 @@ const Layout = ({ children }) => {
         style={{
           margin: `0 auto`,
           padding: `0`,
+          display: `flex`,
+          flexDirection: `column`,
+          justifyContent: `space-between`,
         }}
       >
         <main>{children}</main>

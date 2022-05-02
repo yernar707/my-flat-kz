@@ -1,11 +1,16 @@
 import React from 'react'
 
-
-
 class NewHouse extends React.Component{ 
   constructor(props){
-  super(props);
-  this.handleSubmit = this.handleSubmit.bind(this);
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.imgList = [];
+    this.addImg = this.addImg.bind(this);
+    this.displayImg = this.displayImg.bind(this);
+  }
+
+ state = {
+   added : false
  }
 
  handleSubmit(event){ 
@@ -16,23 +21,59 @@ class NewHouse extends React.Component{
     mode: 'cors',
     body: JSON.stringify({
     "name": this.name.value,
+    "address": this.address.value,
+    "houseType": this.houseType.value,
+    "area" : this.area.value,
+    "address": this.address.value,
+    "toSea" : this.toSea.value,
+    "toCenter" : this.toCenter.value,
+    "constructionYear" : this.constructionYear.value,
+    "furniture" : this.furniture.value,
+    "toAirport" : this.toAirport.value,
     "priceEuro" : this.priceeu.value,
     "priceTenge" : this.pricetg.value,
+    "priceDollar" : this.priceusd.value,
     "city" : this.district.value,
     "room" : this.room.value,
-    "area" : this.area.value,
-    "furniture" : this.furniture.value,
-    "priceDollar" : this.priceusd.value,
+    "images" : this.imgList
     })
   })
   .then(
     alert(this.name.value + " добавлен"),
-    window.location.reload()
+    // window.location.reload()
+  )
+  .then(
+    window.location.reload(),
   )
   .catch((err) => console.log(err));
  };
+
+  addImg(event){
+    event.preventDefault();
+    const imgUrl = this.image.value;
+    if(imgUrl.length > 0)
+      this.imgList.push(imgUrl);
+    this.image.value = "";
+    console.log(this.imgList);
+    this.setState({added: true});
+  };
+
+  displayImg(){this.imgList.forEach(img => {
+      let imgUrl = img.replace('file/d/', 'uc?export=view&id=');
+      imgUrl = imgUrl.replace('/view', '');
+      imgUrl = imgUrl.replace('?usp=sharing', '');
+      console.log(imgUrl)
+      return (<div>
+        <img height={220} key={img} src={imgUrl} alt={img}/>
+      </div>)
+    })
+  }
+
+
+
   
   render(){
+
     return(
       <div className='new-house-form'>
         <h4>Новый дом</h4>
@@ -42,6 +83,59 @@ class NewHouse extends React.Component{
               <tr>
                 <td>Название дома</td>
                 <td><input  ref={(ref) => {this.name = ref}}  type="text" name="name" id="name" /></td>
+              </tr>
+              <tr>
+                <td>Адрес</td>
+                <td><input  ref={(ref) => {this.address = ref}}  type="text" name="address" id="address" /></td>
+              </tr>
+              <tr>
+                <td>Тип недвижимости</td>
+                <td>
+                  <select ref={(ref) => {this.houseType = ref}}  defaultValue={`flat`}>
+                    <option value="flat">Квартира</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Площадь</td>
+                <td><input ref={(ref) => {this.area = ref}} type="number" name="are" id="area" /></td>
+              </tr>
+              <tr>
+                <td>До моря:</td>
+                <td><input ref={(ref) => {this.toSea = ref}} type="number" name="toSea" id="toSea" /></td>
+              </tr>
+              <tr>
+                <td>До центра:</td>
+                <td><input ref={(ref) => {this.toCenter = ref}} type="number" name="toCenter" id="toCenter" /></td>
+              </tr>
+              <tr>
+                <td>До аэропорта:</td>
+                <td><input ref={(ref) => {this.toAirport = ref}} type="number" name="toAirport" id="toAirport" /></td>
+              </tr>
+              <tr>
+                <td>Год постройки:</td>
+                <td><input ref={(ref) => {this.constructionYear = ref}} type="number" name="constructionYear" id="constructionYear" /></td>
+              </tr>
+              <tr>
+                <td>Мебель</td>
+                <td>
+                  <select ref={(ref) => {this.furniture = ref}} defaultValue={`1`}>
+                    <option value="yes">Да</option>
+                    <option value="no">Нет</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Цена в евро</td>
+                <td><input ref={(ref) => {this.priceeu = ref}} type="number" name="euroPrice" id="euroPrice" /></td>
+              </tr>
+              <tr>
+                <td>Цена в долларах</td>
+                <td><input ref={(ref) => {this.priceusd = ref}} type="number" name="dollarPrice" id="dollarPrice" /></td>
+              </tr>
+              <tr>
+                <td>Цена в тенге</td>
+                <td><input ref={(ref) => {this.pricetg = ref}} type="number" name="tengePrice" id="tengePrice" /></td>
               </tr>
               <tr>
                 <td>Район</td>
@@ -65,33 +159,20 @@ class NewHouse extends React.Component{
                 </td>
               </tr>
               <tr>
-                <td>Цена в евро</td>
-                <td><input ref={(ref) => {this.priceeu = ref}} type="number" name="euroPrice" id="euroPrice" /></td>
-              </tr>
-              <tr>
-                <td>Цена в долларах</td>
-                <td><input ref={(ref) => {this.priceusd = ref}} type="number" name="euroPrice" id="euroPrice" /></td>
-              </tr>
-              <tr>
-                <td>Цена в тенге</td>
-                <td><input ref={(ref) => {this.pricetg = ref}} type="number" name="tengePrice" id="tengePrice" /></td>
-              </tr>
-              <tr>
-                <td>Площадь</td>
-                <td><input ref={(ref) => {this.area = ref}} type="number" name="tengePrice" id="tengePrice" /></td>
-              </tr>
-              <tr>
-                <td>Мебель</td>
-                <td>
-                  <select ref={(ref) => {this.furniture = ref}} defaultValue={`1`}>
-                    <option value="yes">Да</option>
-                    <option value="no">Нет</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
                 <td>Фотография</td>
-                <td><input  ref={(ref) => {this.image = ref}}  type="file" name="image" id="image" /></td>
+                <td><input ref={(ref) => {this.image = ref}}  type="text" name="image" id="image" /> <button onClick={this.addImg}>Add image</button></td>
+                <td>
+                  <div>
+                    {this.state.added && this.imgList.forEach(img => {
+                        let imgUrl = img.replace('file/d/', 'uc?export=view&id=');
+                        imgUrl = imgUrl.replace('/view', '');
+                        imgUrl = imgUrl.replace('?usp=sharing', '');
+                        console.log(imgUrl)
+                        return <img height={220} key={img} src={imgUrl} alt={img}/>
+                      })
+                    }
+                  </div>
+                </td>
               </tr>
               <tr>
                 <td></td>
@@ -103,8 +184,9 @@ class NewHouse extends React.Component{
           
         </form>
       </div>
-    )
+    );
   }
+
 }
 
 export default NewHouse

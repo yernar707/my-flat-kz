@@ -72,30 +72,14 @@ class HousePage extends React.Component {
 												}} 
 												className="house-card-inner">
 												<Slider ref={accordionContent => this.accordionContent[index] = accordionContent} {...settings} className="overflow-hidden flat-slider">
-														<StaticImage
-															className="service-img"
-															src="../flat/konak_garden_life.png"
-															width={300}
-															quality={95}
-															formats={["auto", "webp", "avif"]}
-															alt="A Gatsby astronaut"
-														/>
-														<StaticImage
-															className="service-img"
-															src="../flat/konak_green_towers.png"
-															width={300}
-															quality={95}
-															formats={["auto", "webp", "avif"]}
-															alt="A Gatsby astronaut"
-														/>
-														<StaticImage
-															className="service-img"
-															src="../flat/konak_premium.png"
-															width={300}
-															quality={95}
-															formats={["auto", "webp", "avif"]}
-															alt="A Gatsby astronaut"
-														/>
+														{
+															house.images && house.images.map(img => {
+																let imgUrl = img.replace('file/d/', 'uc?export=view&id=');
+																imgUrl = imgUrl.replace('/view', '');
+																imgUrl = imgUrl.replace('?usp=sharing', '');
+																return <img height={220} key={img} src={imgUrl} alt={house.name}/>
+															})
+														}
 													</Slider>
 												<div className="house-card-text">
 													<p className="house-card-title">{house.name} </p>

@@ -5,7 +5,8 @@ import Intro from "../components/intro"
 import Second from "../components/second"
 import Filter from "../components/filter"
 import PostService from "../components/postService"
-import Houses from "../components/houses_local"
+// import Houses from "../components/houses_local"
+import HousesFromApi from "../components/houses"
 import Smi from "../components/smi"
 
 const HomePage = () => {
@@ -15,7 +16,8 @@ const HomePage = () => {
           <Intro></Intro>
           <Second></Second>
           <Filter></Filter>
-          <Houses></Houses>
+          {/* <Houses></Houses> */}
+          <HousesFromApi></HousesFromApi>
           <PostService></PostService>
           <Smi></Smi>
         </Layout>

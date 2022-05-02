@@ -2,6 +2,7 @@ const path = require('path');
 const fetch = (...args) =>
   import(`node-fetch`).then(({ default: fetch }) => fetch(...args))
 
+
 exports.createPages = async ({ graphql, actions }) => {
   const { data } = await graphql(`
     query MyQuery {

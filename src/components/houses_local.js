@@ -17,13 +17,7 @@ export const pageQuery = graphql `
           constructionYear
           furniture
           houseType
-		  images {
-			childrenImageSharp {
-				fluid {
-					...GatsbyImageSharpFluid
-				}
-			}
-		  }
+		  images
           name
           room
           toAirport
@@ -80,38 +74,14 @@ const HousePage = ({ data }) => {
 												}} 
 												className="house-card-inner">
 												<Slider ref={sl => accordionContent[index] = sl} {...settings} className="overflow-hidden flat-slider">
-														
 														{
 															house.frontmatter.images.map(img => {
-																return <Img
-																	fluid={img.childrenImageSharp[0].fluid}
-																	alt="Gatsby Docs are awesome" />
+																let imgUrl = img.replace('file/d/', 'uc?export=view&id=');
+																imgUrl = imgUrl.replace('/view', '');
+																imgUrl = imgUrl.replace('?usp=sharing', '');
+																return <img style={{objectFit: `cover`}} height={220} key={img} src={imgUrl} alt={house.frontmatter.name}/>
 															})
 														}
-														<StaticImage
-															className="service-img"
-															src="../flat/konak_garden_life.png"
-															width={300}
-															quality={95}
-															formats={["auto", "webp", "avif"]}
-															alt="A Gatsby astronaut"
-														/>
-														<StaticImage
-															className="service-img"
-															src="../flat/konak_green_towers.png"
-															width={300}
-															quality={95}
-															formats={["auto", "webp", "avif"]}
-															alt="A Gatsby astronaut"
-														/>
-														<StaticImage
-															className="service-img"
-															src="../flat/konak_premium.png"
-															width={300}
-															quality={95}
-															formats={["auto", "webp", "avif"]}
-															alt="A Gatsby astronaut"
-														/>
 													</Slider>
 												<div className="house-card-text">
 													<p className="house-card-title">{house.frontmatter.name} </p>
