@@ -9,9 +9,10 @@ const settings = {
 	infinite: true,
 	slickPause: true,
 	autoplay: false,
-	autoplaySpeed: 1000,
+	autoplaySpeed: 1200,
 	easing: `ease-in-out`,
-	speed: 400,
+	speed: 800,
+	fade: true,
 }
 
 const play = (key, arr) => {
@@ -51,6 +52,7 @@ class HousePage extends React.Component {
 
 	render(){
 		const { fetchedData } = this.state;
+		const published = fetchedData.filter((house) => !house.name.includes("-UNPUBLISHED"));
 		// let toShow = 6;
 		// fetchedData.length >= 6 ? toShow = 6 : toShow = fetchedData.length;
 		return (
@@ -58,7 +60,7 @@ class HousePage extends React.Component {
 				<div className="body-back services-container">
 					<div className="service-row">
 						{/* {fetchedData.slice(fetchedData.length - toShow).map((house, index) =>{ */}
-						{fetchedData.map((house, index) =>{ 
+						{published.map((house, index) =>{ 
 							if(house.name !== "") 
 								return (
 									<div className="col-4 house-card" key={house.id}>

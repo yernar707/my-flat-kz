@@ -8,9 +8,10 @@ const settings = {
 	infinite: true,
 	slickPause: true,
 	autoplay: false,
-	autoplaySpeed: 1000,
+	autoplaySpeed: 1600,
 	easing: `ease-in-out`,
-	speed: 400,
+	speed: 800,
+	fade: true,
 }
 
 const play = (key, arr) => {

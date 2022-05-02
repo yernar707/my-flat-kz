@@ -69,7 +69,7 @@ export default function Intro({ children }) {
                             }}     
                         ></hr>
                         <p>
-                            Без комиссий. Без переплат
+                            Без комиссий. Без переплат.
                         </p>
                         <button className="order" 
                             onClick={() => {setModal(true)}}

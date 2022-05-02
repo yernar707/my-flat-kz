@@ -1,34 +1,30 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import { GatsbyImage } from "gatsby-plugin-image";
 import Layout from "../components/layout";
 import Seo from "../components/seo";
 import Slider from "react-slick";
-import Img from 'gatsby-image'
 
 
 
-    const settings = {
-        dots: true,
-        dotsClass: "slick-dots slick-thumb",
-        infinite: true,
-        speed: 800,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 1000,
-        
-      };
-
+const settings = {
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    speed: 800,
+    fade: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    
+};
 
 class FlatPage extends React.Component {
 
     constructor(props) {
         super(props);
         this.accordionContent = [];
-        this.id = this.props.pageContext.id;
+        this.id = this.props.pageContext.endpointId;
     }
-    
     state = {
         loading: true,
         fetchedData: [],
@@ -36,11 +32,12 @@ class FlatPage extends React.Component {
 
 
     componentDidMount() {
-        fetch(`https://my--flat.herokuapp.com/api/v1/house/get/${this.id}`)
+        fetch(`https://my--flat.herokuapp.com/api/v1/house/get/` + this.id)
         .then(response => {
             return response.json();
         })
         .then(json => {
+            console.log(json)
             this.setState({
                 loading: false,
                 fetchedData: json
@@ -50,8 +47,8 @@ class FlatPage extends React.Component {
 
 
     render(){
-        
 		const { fetchedData } = this.state;
+        console.log(fetchedData);
         const {
             address,
             area,
@@ -80,7 +77,8 @@ class FlatPage extends React.Component {
                                     {
                                         images && images.map(img => {
                                                 let imgUrl = img.replace('file/d/', 'uc?export=view&id=');
-                                                imgUrl = imgUrl + img.replace('/view', '');
+                                                imgUrl = imgUrl.replace('/view', '');
+                                                imgUrl = imgUrl.replace('?usp=sharing', '');
                                                 return <img key={img} src={imgUrl} alt={name}/>
                                         })
                                     }
@@ -93,9 +91,6 @@ class FlatPage extends React.Component {
                                         <h4>{priceEuro}€</h4>
                                         <h4>{priceTenge}₸</h4>
                                         {priceDollar && <h4>{priceDollar}$</h4>}
-                                    </div>
-                                    <div className='col-12'> 
-                                        <h3>Краткая информация</h3>
                                     </div>
                                     <div className='col-4'>
                                         <p>
