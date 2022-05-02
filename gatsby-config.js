@@ -41,13 +41,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `flats`,
-        path: `${__dirname}/src/flats`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `smi`,
         path: `${__dirname}/src/smi`,
       },
@@ -57,20 +50,6 @@ module.exports = {
       options: {
         name: `backgrounds`,
         path: `${__dirname}/src/bg`, // wherever background images are stored
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `flatImages`,
-        path: `${__dirname}/src/flatPageImg`, // wherever background images are stored
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `flats`,
-        path: `${__dirname}/src/flat`, // wherever background images are stored
       },
     },
     {

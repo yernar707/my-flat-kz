@@ -1,29 +1,5 @@
 import React from 'react'
 
-function deploy() {
-  fetch('http://localhost:8000/__refresh', {
-    method: 'post'
-  }).then(
-    console.log("done")
-  ).catch(
-    (err) =>  console.log(err)
-  )
-  // fetch("https://my--flat.herokuapp.com/api/v1/house/list/")
-  // .then(response => {
-  //   return response.json();
-  // })
-  // .then(json => {
-  //   const newId = json[json.length - 1].id;
-  //   const path = require('path');
-  //   exports.createPages = async ({ graphql, actions }) => {
-  //     actions.createPage({
-  //       path: `/houses/${newId}`,
-  //       component: path.resolve(`./src/templates/FlatPage.js`),
-  //       context: { newId },
-  //     })
-  //   }
-  // })
-}
 
 class NewHouse extends React.Component{ 
   constructor(props){
@@ -45,11 +21,10 @@ class NewHouse extends React.Component{
     headers: {'Content-Type':'application/json'},
     mode: 'cors',
     body: JSON.stringify({
-    "name": this.name.value,
+    "name": this.name.value+"-UNPUBLISHED",
     "address": this.address.value,
     "houseType": this.houseType.value,
     "area" : this.area.value,
-    "address": this.address.value,
     "toSea" : this.toSea.value,
     "toCenter" : this.toCenter.value,
     "constructionYear" : this.constructionYear.value,
@@ -66,13 +41,10 @@ class NewHouse extends React.Component{
   .then(
     alert(this.name.value + " добавлен"),
     // window.location.reload()
-  // )
-  // .then(
-  //   window.location.reload(),
-  ).then(
-    deploy()
   )
-  .catch((err) => console.log(err));
+  .then(
+    window.location.reload(),
+  )
  };
 
   addImg(event){
@@ -81,7 +53,6 @@ class NewHouse extends React.Component{
     if(imgUrl.length > 0)
       this.imgList.push(imgUrl);
     this.image.value = "";
-    console.log(this.imgList);
     this.setState({added: true});
   };
 
@@ -89,7 +60,6 @@ class NewHouse extends React.Component{
       let imgUrl = img.replace('file/d/', 'uc?export=view&id=');
       imgUrl = imgUrl.replace('/view', '');
       imgUrl = imgUrl.replace('?usp=sharing', '');
-      console.log(imgUrl)
       return (<div>
         <img height={220} key={img} src={imgUrl} alt={img}/>
       </div>)
@@ -168,7 +138,7 @@ class NewHouse extends React.Component{
                 <td>Район</td>
                 <td>
                   <select ref={(ref) => {this.district = ref}}  defaultValue={`Авсалар`}>
-                    <option value="Авсалар">Авсалар</option>
+                    <option value="Авсаллар">Авсаллар</option>
                     <option value="Махмутлар">Махмутлар</option>
                     <option value="Каргыджак">Каргыджак</option>
                   </select>
@@ -194,7 +164,6 @@ class NewHouse extends React.Component{
                         let imgUrl = img.replace('file/d/', 'uc?export=view&id=');
                         imgUrl = imgUrl.replace('/view', '');
                         imgUrl = imgUrl.replace('?usp=sharing', '');
-                        console.log(imgUrl)
                         return <img height={220} key={img} src={imgUrl} alt={img}/>
                       })
                     }

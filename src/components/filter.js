@@ -43,7 +43,7 @@ class Filter extends React.Component {
                     <div className="col-3 filter-select">
                       <select defaultValue={`Default`}>
                         <option value="Default" disabled>Выберите район</option>
-                        <option value="Авсалар">Авсалар</option>
+                        <option value="Авсаллар">Авсаллар</option>
                         <option value="Махмутлар">Махмутлар</option>
                         <option value="Каргыджак">Каргыджак</option>
                       </select>
