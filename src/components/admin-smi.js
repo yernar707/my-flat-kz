@@ -33,7 +33,6 @@ export const pageQuery = graphql `
 			nodes{
           text
           slug
-          portal
           image {
               gatsbyImageData
               url

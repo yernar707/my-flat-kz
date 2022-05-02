@@ -7,7 +7,6 @@ import { GatsbyImage } from "gatsby-plugin-image"
 const HousePage = ({ data }) => {
 
     const { 
-      slug, 
       title, 
       first, 
       second, 

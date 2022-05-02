@@ -1,8 +1,5 @@
 import * as React from "react"
-import PropTypes from "prop-types"
-import { Link, StaticQuery, graphql } from "gatsby"
-import { useState } from "react"
-import Index from "../pages/index"
+import { Link } from "gatsby"
 import Complexes from "../components/complexes"
 
 
@@ -37,7 +34,6 @@ class BottomHeader extends React.Component {
   };
 
   render() {
-    const siteTitle = this.props
     const { modal, sent } = this.state;
     return (
         <div className="bottom-header">

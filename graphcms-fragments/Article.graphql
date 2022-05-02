@@ -6,7 +6,6 @@ fragment Article on Article {
   remoteId: id
   slug
   title
-  portal
   links
   text
   publishedBy {

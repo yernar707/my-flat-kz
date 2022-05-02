@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from "react";
 
 
 class App extends React.Component {
@@ -22,7 +21,7 @@ class App extends React.Component {
 
 	}
 	render() {
-		const { loading, fetchedData } = this.state;
+		const { fetchedData } = this.state;
 		return (
 			<div>
 				<table style={{width:1000, margin:`auto`}}>

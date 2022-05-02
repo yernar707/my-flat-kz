@@ -8,10 +8,6 @@ import PostService from "../components/postService"
 import Houses from "../components/houses"
 import Smi from "../components/smi"
 
-
-
-
-
 const HomePage = () => {
     return (
         <Layout>

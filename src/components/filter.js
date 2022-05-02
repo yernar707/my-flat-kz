@@ -1,10 +1,6 @@
 import React from "react";
 import 'rc-slider/assets/index.css';
-import Slider, { Range } from 'rc-slider';
-
-function log(value) {
-  console.log(value); //eslint-disable-line
-}
+import Slider from 'rc-slider';
 
 class Filter extends React.Component {
   state = {
@@ -147,6 +143,7 @@ class Filter extends React.Component {
               </div>
           </div>    
         </div>
+        
       </div>
     )
   }

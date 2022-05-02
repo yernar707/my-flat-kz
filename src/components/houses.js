@@ -50,14 +50,15 @@ class HousePage extends React.Component {
 	}
 
 	render(){
-		const { loading, fetchedData } = this.state;
-		let toShow = 6;
-		fetchedData.length >= 6 ? toShow = 6 : toShow = fetchedData.length;
+		const { fetchedData } = this.state;
+		// let toShow = 6;
+		// fetchedData.length >= 6 ? toShow = 6 : toShow = fetchedData.length;
 		return (
 			<>
 				<div className="body-back services-container">
 					<div className="service-row">
-						{fetchedData.slice(fetchedData.length - toShow).map((house, index) =>{
+						{/* {fetchedData.slice(fetchedData.length - toShow).map((house, index) =>{ */}
+						{fetchedData.map((house, index) =>{ 
 							if(house.name !== "") 
 								return (
 									<div className="col-4 house-card" key={house.id}>

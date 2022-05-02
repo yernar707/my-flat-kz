@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, useStaticQuery, Link } from 'gatsby'
+import { Link } from 'gatsby'
 import { StaticImage } from "gatsby-plugin-image";
 import NumberFormat from 'react-number-format';
 
@@ -34,7 +34,7 @@ class Catalog extends React.Component {
 	render(){
 		const { data } = this.props
 		console.log(data)
-		const { loading, fetchedData } = this.state;
+		const { fetchedData } = this.state;
 		return (
 			<>
 				<div className="body-back services-container">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 import Slider from "react-slick";
 
 export const pageQuery = graphql `
@@ -9,7 +9,6 @@ export const pageQuery = graphql `
 			nodes{
                 links
 				slug
-				portal
 				image {
 				  gatsbyImageData
 				  url
@@ -34,7 +33,7 @@ const settings = {
 
 const SmiPage = ({ data }) => {
     const [modal, setModal] = useState("");
-    const { smi, flats } = useStaticQuery(pageQuery);
+    const { smi } = useStaticQuery(pageQuery);
 	return (
         <div id="smi" className="smi">
             <div className="body-back services-container smi-container">
@@ -78,8 +77,14 @@ const SmiPage = ({ data }) => {
                     modal === (article.id) ? <div className="modal-order dark-bck" key={`${article.id}-modal`}>
                         <div className='smi-modal'>
                             <span onClick={() => setModal("")} style={{position: `absolute`, cursor: `pointer`, fontSize: 24, top: 15, right: 20, color: `#000`}}>×</span>
-                            <h1>{article.title}</h1>
-                            <div>
+                            <h3>{article.title}</h3>
+                            <StaticImage 
+                                src='../bg/5f3e59d8-364c-4d91-8446-5d616b5795f6.jpg'
+                                width={200}
+                                style={{margin:`auto`}}
+                                quality={95}
+                            />
+                            <div><br></br>
                                 <p>
                                     {article.text}
                                 </p>

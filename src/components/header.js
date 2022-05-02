@@ -7,7 +7,6 @@ class Header extends React.Component {
   }
 
   render() {
-    const { dropdown } = this.state;
     return (
       <header
         style={{
@@ -32,7 +31,7 @@ class Header extends React.Component {
                 </p>
               </div>
               <div className="country-phone">
-                <p>+77777071234</p>
+                <a href="tel:+77777071234">+77777071234</a>
               </div>
               
             </div>
@@ -58,7 +57,7 @@ class Header extends React.Component {
                 </p>
               </div>
               <div className="country-phone">
-                <p>+77777071234</p>
+                <a href="tel:+77777071234">+77777071234</a>
               </div>
             </div>
           </div>
@@ -116,7 +115,7 @@ class Header extends React.Component {
                         </svg>
                       </span>
                       <a href="#" style={{
-                        marginTop: 15,
+                        marginTop: 12,
                       }}>KZ</a>
                       <a href="#">TR</a>
                     </div>

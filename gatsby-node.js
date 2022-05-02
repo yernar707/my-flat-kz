@@ -14,7 +14,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
       flatPage: allRestApiApiV1HouseList {
           nodes {
-              id
             endpointId
           }
       }

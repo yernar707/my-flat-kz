@@ -608,7 +608,7 @@ pre tt:after {
 .bottom-header {
   background-color: #141B2D;
   position: sticky;
-  top: 0;
+  top: -5px;
   z-index: 9999;
 }
 
@@ -619,6 +619,14 @@ pre tt:after {
 
 .country-name p svg {
   margin-right: 5px;
+}
+
+.country-phone a{
+  text-decoration: none;
+  color: #000;
+  font-weight: 300;
+  margin-left: 1.3rem;
+  font-size: 12px;
 }
 
 .container {
@@ -1214,11 +1222,6 @@ html, body {
   vertical-align: middle;
 }
 
-.smi {
-  /* background-color: #141B2D;
-  padding-left: 110px;
-  padding-bottom: 50px; */
-}
 
 .smi-container {
   margin: auto;
@@ -2011,13 +2014,22 @@ footer table td p {
 
 .smi-modal {
   background-color: #FFF;
-  width: 900px;
+  width: 700px;
   max-height: 550px;
   border-radius: 15px;
   word-wrap: break-word;
   overflow-y: scroll;
   padding: 50px;
   position: relative;
+}
+
+.smi-modal .gatsby-image-wrapper{
+  width: 100%;
+  margin: auto;
+}
+
+.smi-modal p {
+  font-size: 15px;
 }
 
 .slider-inner .smi-more {
@@ -2030,10 +2042,6 @@ footer table td p {
   width: 1000px;
   margin: 60px auto;
   border-radius: 10px;
-}
-
-.flat-content {
-
 }
 
 .flat-title, .flat-price {
