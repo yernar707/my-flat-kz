@@ -14,7 +14,10 @@ const FlatPage = ({ data }) => {
         infinite: true,
         speed: 800,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1000,
+        
       };
     
     const { 
@@ -39,7 +42,7 @@ const FlatPage = ({ data }) => {
     return(
         <Layout>
         <Seo title="MYFLAT.KZ" />
-            <div className="intro">
+            <div className="intro flat">
                 <div className="flat-body-back">
                         <div className="flat-content ">
                             <Slider {...settings}>
@@ -130,6 +133,7 @@ const FlatPage = ({ data }) => {
                             </div>
                         </div>
                 </div>
+              <div className='space-after-flat'> </div>
             </div>
         </Layout>
     )

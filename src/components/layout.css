@@ -2067,3 +2067,7 @@ footer table td p {
 .short-info .col-4 p svg {
   margin-right: 5px;
 }
+
+.space-after-flat {
+  min-height: 50vh;
+}
