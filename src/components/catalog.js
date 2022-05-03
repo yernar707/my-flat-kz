@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import NumberFormat from 'react-number-format';
 import Slider from 'react-slick';
 
@@ -56,7 +56,6 @@ class Catalog extends React.Component {
 		const deploy = (arr) => {
 			if (window.confirm('Процесс займет некоторое время и перезагрузит сайт. Вы согласны?')) {
 				Promise.all(arr.map(house => {
-					console.log(house.id)
 					const newName = house.name.replace("-UNPUBLISHED", "");
 					return fetch(`https://my--flat.herokuapp.com/api/v1/house/update/` + house.id, {
 						method: 'PUT',
@@ -78,7 +77,7 @@ class Catalog extends React.Component {
 		const get = (event) =>{
 			const id = event.target.id
 			event.preventDefault();
-			fetch(`https://my--flat.herokuapp.com/api/v1/house/delete/${id}`, {//need to change get -> delete
+			fetch(`https://my--flat.herokuapp.com/api/v1/house/delete/${id}`, {
 				method: 'delete',
 				headers: {'Content-Type':'application/json'},
 				mode: 'cors'
@@ -92,9 +91,6 @@ class Catalog extends React.Component {
 			)
 		}
 		
-		
-
-		// unpublished.length == 0 ? this.setState({disableDeploy:true}) : this.setState({disableDeploy:false}); 
 
 		return (
 			<>
@@ -123,8 +119,6 @@ class Catalog extends React.Component {
 											pause(index, this.accordionContent);
 										}} 
 									>
-										{/* <GatsbyImage className="house-img" src={house.mainImage.url} image={house.mainImage.gatsbyImageData} alt={house.houseName} /> */}
-										
 										<Slider ref={accordionContent => this.accordionContent[index] = accordionContent} {...settings} className="overflow-hidden flat-slider">
 											{
 												house.images && house.images.map(img => {
@@ -154,7 +148,17 @@ class Catalog extends React.Component {
 											<p className="house-card-district">{`${house.city}`}</p>
 										</div>
 										<div className='house-card-buttons'>
-											<button id={house.id} onClick={get}>Удалить</button>
+											<button className='edit' onClick={(event) => {
+												event.preventDefault()
+												navigate(
+													"/app/edit-house/",
+													{
+														state: { house },
+													}
+												)
+											
+											}} to="/app/edit-house/" state={house}>Редактировать</button>
+											<button className='delete' id={house.id} onClick={get}>Удалить</button>
 										</div>
 									</div>
 								</div>
@@ -208,7 +212,17 @@ class Catalog extends React.Component {
 											<p className="house-card-district">{`${house.city}`}</p>
 										</div>
 										<div className='house-card-buttons'>
-											<button id={house.id} onClick={get}>Удалить</button>
+											<button className='edit' onClick={(event) => {
+												event.preventDefault()
+												navigate(
+													"/app/edit-house/",
+													{
+														state: { house },
+													}
+												)
+											
+											}} to="/app/edit-house/" state={house}>Редактировать</button>
+											<button className='delete' id={house.id} onClick={get}>Удалить</button>
 										</div>
 									</div>
 								</div>

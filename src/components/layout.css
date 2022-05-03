@@ -1424,17 +1424,27 @@ html, body {
 
 .house-card-buttons button {
   border: none;
-  background-color: #d83a3a;
   color: #FFF;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
+.house-card-buttons .edit {
+  margin-right: 10px;
+  background-color: #41ae71;
+}
 
-.house-card-buttons button:hover{
+.house-card-buttons .delete {
+  background-color: #d83a3a;
+}
+
+.house-card-buttons .delete:hover{
   background-color: #cb0505;
 }
 
+.house-card-buttons .edit:hover{
+  background-color: #0ba950;
+}
 .new-house-form h4{
   text-align: center;
 }
