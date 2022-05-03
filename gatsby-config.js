@@ -9,7 +9,7 @@ module.exports = {
   siteMetadata: {
     title: `MYFLAT.KZ`,
     description: `Недвижимость в Турции`,
-    author: `Yernar Yergaziyev`,
+    author: `Yernar Yergaziyev https://github.com/yernar707`,
   },
   plugins: [
     {
